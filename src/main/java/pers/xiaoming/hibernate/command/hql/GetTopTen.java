@@ -6,7 +6,7 @@ import pers.xiaoming.hibernate.entity.Student;
 
 import java.util.List;
 
-public class Sort implements GetTopTenStudents {
+public class GetTopTen implements GetTopTenStudents {
 
     // limit is not supported in HQL,
     // need to use setMaxResults(maxRows) function

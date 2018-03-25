@@ -1,21 +1,25 @@
-package pers.xiaoming.hibernate.command.sql;
+package pers.xiaoming.hibernate.command.qbc;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import pers.xiaoming.hibernate.command.GetTopTenStudents;
 import pers.xiaoming.hibernate.entity.Student;
 
 import java.util.List;
 
-public class Sort implements GetTopTenStudents {
-    private final static String SQL_QUERY = "SELECT t_id, t_name, t_age, t_score FROM t_student ORDER BY t_score DESC LIMIT 10;";
-
+public class GetTopTen implements GetTopTenStudents {
     @SuppressWarnings("unchecked")
     public List<Student> get(Session session) {
         try {
             session.beginTransaction();
 
-            List<Student> list = session.createSQLQuery(SQL_QUERY)
-                    .addEntity(Student.class).list();
+            Criteria criteria = session.createCriteria(Student.class);
+            criteria.addOrder(Order.desc("score"));
+            criteria.add(Restrictions.sizeEq("id", 10));
+
+            List<Student> list = criteria.list();
 
             session.getTransaction().commit();
             return list;
