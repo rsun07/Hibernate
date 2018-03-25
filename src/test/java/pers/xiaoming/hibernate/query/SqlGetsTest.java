@@ -1,16 +1,28 @@
 package pers.xiaoming.hibernate.query;
 
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pers.xiaoming.hibernate.command.GetStudent;
 import pers.xiaoming.hibernate.command.sql.BasicGet;
 import pers.xiaoming.hibernate.entity.Student;
 import pers.xiaoming.hibernate.session_factory.Server;
 
+import java.util.List;
+
 public class SqlGetsTest {
+
+    private List<Integer> ids;
+
+    @BeforeClass
+    public void setUp() {
+        ids = DataPreparator.getIds();
+    }
+
     @Test
     public void testGetStudent() {
         GetStudent getStudent = new BasicGet();
-        Student student = getStudent.get(Server.getSession(), 1);
+        Student student = getStudent.get(Server.getSession(), ids.get(0));
         System.out.println(student);
     }
 }
