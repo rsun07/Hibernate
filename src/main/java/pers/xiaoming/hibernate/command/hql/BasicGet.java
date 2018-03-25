@@ -8,9 +8,9 @@ import java.util.List;
 
 public class BasicGet implements GetStudent {
     // Student here is class name rather than table name
-    private final static String HQL_WILDCARD_QUERY = "FROM Student WHERE id = ?;";
+    private final static String HQL_WILDCARD_QUERY = "FROM Student WHERE id = ?";
 
-    private final static String HQL_PARAM_QUERY = "FROM Student WHERE id = :id;";
+    private final static String HQL_PARAM_QUERY = "FROM Student WHERE id = :id";
 
 
 
@@ -19,9 +19,9 @@ public class BasicGet implements GetStudent {
         try {
             session.beginTransaction();
 
-//            List<Student> list = session.createQuery(HQL_PARAM_QUERY)
+//            List<Student> list = session.createQuery(HQL_WILDCARD_QUERY)
 //                    .setInteger(0, id).list();
-            List<Student> list = session.createQuery(HQL_WILDCARD_QUERY)
+            List<Student> list = session.createQuery(HQL_PARAM_QUERY)
                     .setInteger("id", id).list();
 
             session.getTransaction().commit();
