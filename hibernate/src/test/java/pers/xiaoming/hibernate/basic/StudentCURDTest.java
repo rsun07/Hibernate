@@ -1,8 +1,8 @@
 package pers.xiaoming.hibernate.basic;
 
-import org.hibernate.Session;
 import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pers.xiaoming.hibernate.command.basic.CURDStudentBasic;
 import pers.xiaoming.hibernate.entity.Student;
@@ -10,45 +10,48 @@ import pers.xiaoming.hibernate.session_factory.Server;
 
 public class StudentCURDTest {
     private static CURDStudentBasic dbOperator;
+    private static Student student;
+    private static int id;
 
-    @BeforeTest
+    @BeforeClass
     public static void init() {
         dbOperator = new CURDStudentBasic();
+        student = Student.builder().name("John").age(20).score(88.5).build();
     }
 
     @Test
-    public void testCreateAndDelete() {
-        Student student = Student.builder().name("John").age(20).score(88.5).build();
+    public void testCreate() {
+        id = dbOperator.create(Server.getSession(), student);
+        testGet();
+    }
 
-        int id = create(getMySession(), student);
-        student.setId(id);
+    @Test(dependsOnMethods = "testCreate")
+    public void testUpdate() {
+        student.setAge(22);
+        student.setScore(90.5);
+        dbOperator.update(Server.getSession(), student);
+        testGet();
+    }
 
-        Student studentGetFromDb = get(getSession(),id);
+    @Test(dependsOnMethods = "testUpdate")
+    public void testDelete() {
+        dbOperator.delete(Server.getSession(), id);
+        student = null;
+        testGet();
+    }
+
+
+    private void testGet() {
+        Student studentGetFromDb = dbOperator.get(Server.getSession(), id);
         Assert.assertEquals(student, studentGetFromDb);
-
-        delete(getSession(),id);
-
-        studentGetFromDb = get(getSession(),id);
-        Assert.assertNull(studentGetFromDb);
     }
 
-    private int create(Session session, Student student) {
-        return dbOperator.create(session, student);
-    }
-
-    private Student get(Session session, int id) {
-        return dbOperator.get(session, id);
-    }
-
-    private void delete(Session session, int id) {
-        dbOperator.delete(session, id);
-    }
-
-    private Session getSession() {
-        return Server.getSession();
-    }
-
-    private Session getMySession() {
-        return Server.getSession();
+    @AfterTest
+    public void cleanup() {
+        try {
+            dbOperator.delete(Server.getSession(), id);
+        } catch (Exception e) {
+            // ignore
+        }
     }
 }
