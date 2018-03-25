@@ -1,13 +1,17 @@
 package pers.xiaoming.hibernate.basic;
 
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import pers.xiaoming.hibernate.command.basic.CURDStudentBasic;
 import pers.xiaoming.hibernate.entity.Student;
+import pers.xiaoming.hibernate.session_factory.MyServer;
 import pers.xiaoming.hibernate.session_factory.Server;
 
 
 public class HibernateLifeCycleTest {
+
+    private int id;
 
     @Test
     @SuppressWarnings("UnnecessaryLocalVariable")
@@ -20,7 +24,8 @@ public class HibernateLifeCycleTest {
 
         Assert.assertNull(student.getId());
 
-        int id = dbOperator.create(Server.getSession(), student);
+        // here use MyServer, my.cfg.xml with hibernate.properties
+        this.id = dbOperator.create(MyServer.getSession(), student);
 
         Student studentAfterCreate = student;
 
@@ -29,6 +34,12 @@ public class HibernateLifeCycleTest {
         // it will be assigned to the instance
         Assert.assertNotNull(student.getId());
         Assert.assertSame(studentBeforeCreate, studentAfterCreate);
-        Assert.assertEquals((Integer) id, student.getId());
+        Assert.assertEquals((Integer) this.id, student.getId());
+    }
+
+    @AfterClass
+    public void cleanup() {
+        CURDStudentBasic dbOperator = new CURDStudentBasic();
+        dbOperator.delete(MyServer.getSession(), this.id);
     }
 }
