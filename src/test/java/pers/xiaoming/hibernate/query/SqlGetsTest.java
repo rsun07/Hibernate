@@ -1,10 +1,12 @@
 package pers.xiaoming.hibernate.query;
 
+import org.junit.Assert;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pers.xiaoming.hibernate.command.GetStudent;
+import pers.xiaoming.hibernate.command.GetTopTenStudents;
 import pers.xiaoming.hibernate.command.sql.BasicGet;
+import pers.xiaoming.hibernate.command.sql.Sort;
 import pers.xiaoming.hibernate.entity.Student;
 import pers.xiaoming.hibernate.session_factory.Server;
 
@@ -16,13 +18,21 @@ public class SqlGetsTest {
 
     @BeforeClass
     public void setUp() {
-        ids = DataPreparator.getIds();
+        ids = DataProcessor.getIds();
     }
 
     @Test
     public void testGetStudent() {
         GetStudent getStudent = new BasicGet();
         Student student = getStudent.get(Server.getSession(), ids.get(0));
-        System.out.println(student);
+        Assert.assertTrue(DataProcessor.validateStudent(student));
+    }
+
+    @Test
+    public void testGetTopTenStudents() {
+        GetTopTenStudents getStudents = new Sort();
+        List<Student> students = getStudents.get(Server.getSession());
+        Assert.assertEquals(10, students.size());
+
     }
 }
