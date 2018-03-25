@@ -37,6 +37,8 @@ public class DataProcessor {
         }
     }
 
+    // As we truncate the table every time before suite test
+    // this is redundant now
     @AfterTest
     public static void cleanup() {
         for(int id : ids) {
