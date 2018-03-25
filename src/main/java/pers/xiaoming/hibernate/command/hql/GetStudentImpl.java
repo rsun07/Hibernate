@@ -21,11 +21,11 @@ public class GetStudentImpl implements GetStudent {
 
 //            List<Student> list = session.createQuery(HQL_WILDCARD_QUERY)
 //                    .setInteger(0, id).list();
-            List<Student> list = session.createQuery(HQL_PARAM_QUERY)
-                    .setInteger("id", id).list();
+            Student student = (Student) session.createQuery(HQL_PARAM_QUERY)
+                    .setInteger("id", id).uniqueResult();
 
             session.getTransaction().commit();
-            return list.get(0);
+            return student;
 
         } catch (Exception e) {
             session.getTransaction().rollback();

@@ -16,12 +16,12 @@ public class GetStudentImpl implements GetStudent {
             session.beginTransaction();
 
             Criteria criteria = session.createCriteria(Student.class);
-            criteria.add(Restrictions.like("id", id));
+            criteria.add(Restrictions.in("id", id));
 
-            List<Student> list = criteria.list();
+            Student student = (Student) criteria.uniqueResult();
 
             session.getTransaction().commit();
-            return list.get(0);
+            return student;
 
         } catch (Exception e) {
             session.getTransaction().rollback();
