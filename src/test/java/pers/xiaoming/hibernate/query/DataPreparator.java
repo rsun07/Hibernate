@@ -13,10 +13,14 @@ import java.util.List;
 public class DataPreparator {
 
     private static final int NUM_OF_DATA_GENERATE = 10;
-    private List<Integer> ids;
+    private static List<Integer> ids;
+
+    public static List<Integer> getIds() {
+        return ids;
+    }
 
     @BeforeTest
-    public void dbDataPrepare() {
+    public static void dbDataPrepare() {
         CURDStudentBasic dbOperator = new CURDStudentBasic();
         ids = new ArrayList<>();
 
@@ -31,7 +35,7 @@ public class DataPreparator {
     }
 
     @AfterTest
-    public void cleanup() {
+    public static void cleanup() {
         for(int id : ids) {
             CURDStudentBasic dbOperator = new CURDStudentBasic();
 
