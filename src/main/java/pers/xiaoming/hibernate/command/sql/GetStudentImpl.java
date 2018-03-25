@@ -2,12 +2,12 @@ package pers.xiaoming.hibernate.command.sql;
 
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
-import pers.xiaoming.hibernate.command.GetStudent;
+import pers.xiaoming.hibernate.command.get_interface.GetStudent;
 import pers.xiaoming.hibernate.entity.Student;
 
 import java.util.List;
 
-public class BasicGet implements GetStudent {
+public class GetStudentImpl implements GetStudent {
     // In SQL, use database table attribute names instead of Java Class field names
     private final static String GET_SQL = "SELECT t_id, t_name, t_age, t_score FROM t_student WHERE t_id = ? LIMIT 10;";
 

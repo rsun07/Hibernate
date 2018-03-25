@@ -1,4 +1,4 @@
-package pers.xiaoming.hibernate.command;
+package pers.xiaoming.hibernate.command.get_interface;
 
 import org.hibernate.Session;
 import pers.xiaoming.hibernate.entity.Student;
