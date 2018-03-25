@@ -1,12 +1,12 @@
 package pers.xiaoming.hibernate.command.sql;
 
 import org.hibernate.Session;
-import pers.xiaoming.hibernate.command.GetTopTenStudents;
+import pers.xiaoming.hibernate.command.get_interface.GetTopTenStudents;
 import pers.xiaoming.hibernate.entity.Student;
 
 import java.util.List;
 
-public class GetTopTen implements GetTopTenStudents {
+public class GetTopTenStudentsImpl implements GetTopTenStudents {
     private final static String SQL_QUERY = "SELECT t_id, t_name, t_age, t_score FROM t_student ORDER BY t_score DESC LIMIT 10;";
 
     @SuppressWarnings("unchecked")

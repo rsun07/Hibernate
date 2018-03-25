@@ -1,12 +1,12 @@
 package pers.xiaoming.hibernate.command.hql;
 
 import org.hibernate.Session;
-import pers.xiaoming.hibernate.command.GetStudent;
+import pers.xiaoming.hibernate.command.get_interface.GetStudent;
 import pers.xiaoming.hibernate.entity.Student;
 
 import java.util.List;
 
-public class BasicGet implements GetStudent {
+public class GetStudentImpl implements GetStudent {
     // Student here is class name rather than table name
     private final static String HQL_WILDCARD_QUERY = "FROM Student WHERE id = ?";
 

@@ -4,9 +4,8 @@ import org.junit.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pers.xiaoming.hibernate.command.GetStudent;
-import pers.xiaoming.hibernate.command.GetTopTenStudents;
-import pers.xiaoming.hibernate.command.hql.GetTopTen;
+import pers.xiaoming.hibernate.command.get_interface.GetStudent;
+import pers.xiaoming.hibernate.command.get_interface.GetTopTenStudents;
 import pers.xiaoming.hibernate.entity.Student;
 import pers.xiaoming.hibernate.session_factory.Server;
 
@@ -29,9 +28,9 @@ public class GetQueryTest {
     @DataProvider(name = "get_student")
     public Object[][] getStudentDataProvider() {
         return new Object[][] {
-                {new pers.xiaoming.hibernate.command.sql.BasicGet()},
-                {new pers.xiaoming.hibernate.command.hql.BasicGet()},
-                {new pers.xiaoming.hibernate.command.qbc.BasicGet()},
+                {new pers.xiaoming.hibernate.command.sql.GetStudentImpl()},
+                {new pers.xiaoming.hibernate.command.hql.GetStudentImpl()},
+                {new pers.xiaoming.hibernate.command.qbc.GetStudentImpl()},
         };
     }
 
@@ -44,9 +43,9 @@ public class GetQueryTest {
     @DataProvider(name = "get_topten_student")
     public Object[][] getTopTenStudentDataProvider() {
         return new Object[][] {
-                {new pers.xiaoming.hibernate.command.sql.GetTopTen()},
-                {new pers.xiaoming.hibernate.command.hql.GetTopTen()},
-                {new pers.xiaoming.hibernate.command.qbc.GetTopTen()},
+                {new pers.xiaoming.hibernate.command.sql.GetTopTenStudentsImpl()},
+                {new pers.xiaoming.hibernate.command.hql.GetTopTenStudentsImpl()},
+                {new pers.xiaoming.hibernate.command.qbc.GetTopTenStudentsImpl()},
         };
     }
 }
