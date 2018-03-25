@@ -17,7 +17,7 @@ public class GetTopTenStudentsImpl implements GetTopTenStudents {
 
             Criteria criteria = session.createCriteria(Student.class);
             criteria.addOrder(Order.desc("score"));
-            criteria.add(Restrictions.sizeEq("id", 10));
+            criteria.setMaxResults(10);
 
             List<Student> list = criteria.list();
 

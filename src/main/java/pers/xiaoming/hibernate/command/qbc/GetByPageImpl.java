@@ -1,5 +1,6 @@
-package pers.xiaoming.hibernate.command.hql;
+package pers.xiaoming.hibernate.command.qbc;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import pers.xiaoming.hibernate.command.get_interface.GetByPage;
 import pers.xiaoming.hibernate.entity.Student;
@@ -8,22 +9,20 @@ import java.util.List;
 
 public class GetByPageImpl implements GetByPage {
 
-    private static final String QUERY = "FROM Student";
-
     @Override
     @SuppressWarnings("unchecked")
     public List<Student> get(Session session, int offset, int pageSize) {
         try {
             session.beginTransaction();
 
-            List<Student> students = session.createQuery(QUERY)
-                    .setFirstResult(offset)
-                    .setMaxResults(pageSize)
-                    .list();
+            Criteria criteria = session.createCriteria(Student.class);
+            criteria.setFirstResult(offset).setMaxResults(pageSize);
+
+            List<Student> list = criteria.list();
 
             session.getTransaction().commit();
+            return list;
 
-            return students;
         } catch (Exception e) {
             session.getTransaction().rollback();
             throw e;
