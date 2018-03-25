@@ -25,10 +25,13 @@
         <!--To make sure in one single thread, always get the same session-->
         <property name="hibernate.current_session_context_class">thread</property>
 
-        <!--Show SQL-->
+        <!--Show SQL Logs-->
         <property name="hibernate.show_sql">true</property>
-        <!--Format SQL-->
+        <!--Format SQL Logs-->
         <property name="hibernate.format_sql">true</property>
+
+        <!--Every time create a new table for testing-->
+        <property name="hibernate.hbm2ddl.auto">create</property>
 
         <!--Register entity mapping files-->
         <mapping resource="Student.hbm.xml"/>

@@ -12,7 +12,8 @@ public class GetStudentImpl implements GetStudent {
 
     private final static String HQL_PARAM_QUERY = "FROM Student WHERE id = :id";
 
-
+    private final static String HQL_SELECT_QUERY =
+            "SELECT new Student(id, name, age, score) FROM Student WHERE id = :id";
 
     @SuppressWarnings("unchecked")
     public Student get(Session session, int id) {
