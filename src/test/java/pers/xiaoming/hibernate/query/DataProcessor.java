@@ -10,10 +10,11 @@ import pers.xiaoming.hibernate.session_factory.Server;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DataPreparator {
+public class DataProcessor {
 
     private static final int NUM_OF_DATA_GENERATE = 10;
     private static List<Integer> ids;
+    private static List<Student> students;
 
     public static List<Integer> getIds() {
         return ids;
@@ -23,10 +24,12 @@ public class DataPreparator {
     public static void dbDataPrepare() {
         CURDStudentBasic dbOperator = new CURDStudentBasic();
         ids = new ArrayList<>();
+        students = new ArrayList<>();
 
         for (int i = 0; i < NUM_OF_DATA_GENERATE; i++) {
             Student student = Student.builder().name("John" + i)
                     .age(20 + i).score(80.0 + i).build();
+            students.add(student);
 
             Session session = Server.getSession();
             int id = dbOperator.create(session, student);
@@ -42,5 +45,9 @@ public class DataPreparator {
             Session session = Server.getSession();
             dbOperator.delete(session, id);
         }
+    }
+
+    public static boolean validateStudent(Student student) {
+        return students.contains(student);
     }
 }
