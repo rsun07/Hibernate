@@ -2,6 +2,16 @@
         <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="hibernate_test">
     <test name="Initial Dao">
+        <classes>
+            <class name="pers.xiaoming.hibernate.InitDao"/>
+        </classes>
     </test>
+
+    <test name="one to many create test">
+        <classes>
+            <class name="pers.xiaoming.hibernate.one_to_many.createTest"/>
+        </classes>
+    </test>
+
 
 </suite>

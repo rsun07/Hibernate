@@ -3,26 +3,20 @@
 <!DOCTYPE hibernate-mapping PUBLIC
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<hibernate-mapping package="pers.xiaoming.hibernate.entity.one_to_many">
+<hibernate-mapping package="pers.xiaoming.hibernate.entity.self_relation">
     <!--omit table name and attribute names if use same name as Class name and field names-->
-    <class name="City" table="city">
-        <id name = "cid" column="id">
+    <class name="Employee">
+        <id name = "id">
             <generator class="native"/>
         </id>
-        <property name="cname" column="name"/>
-        <set name="residents" cascade="save-update">
+        <property name="name"/>
+        <set name="subordinators" cascade="save-update">
             <!--This column name will be used to define foreigner key -->
             <!--So the name should NOT duplicate with primary key-->
-            <key column="cid"/>
-            <one-to-many class="Person"/>
+            <key column="manager_id"/>
+            <one-to-many class="Employee"/>
         </set>
-    </class>
-
-    <class name="Person" table="person">
-        <id name="pid" column="id">
-            <generator class="native"/>
-        </id>
-        <property name="pname" column="name"/>
+        <many-to-one name="manager" cascade="save-update" class="Employee" column="subordinator_id"/>
     </class>
 
 </hibernate-mapping>
