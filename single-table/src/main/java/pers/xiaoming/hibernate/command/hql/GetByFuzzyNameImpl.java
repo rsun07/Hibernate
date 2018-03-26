@@ -2,7 +2,6 @@ package pers.xiaoming.hibernate.command.hql;
 
 import org.hibernate.Session;
 import pers.xiaoming.hibernate.command.get_interface.GetByFuzzyName;
-import pers.xiaoming.hibernate.command.get_interface.GetTopTenStudents;
 import pers.xiaoming.hibernate.entity.Student;
 
 import java.util.List;

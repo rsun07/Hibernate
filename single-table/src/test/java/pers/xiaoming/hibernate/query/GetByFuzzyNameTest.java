@@ -4,7 +4,6 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pers.xiaoming.hibernate.command.get_interface.GetByFuzzyName;
-import pers.xiaoming.hibernate.command.get_interface.GetTopTenStudents;
 import pers.xiaoming.hibernate.entity.Student;
 import pers.xiaoming.hibernate.session_factory.SessionManager;
 

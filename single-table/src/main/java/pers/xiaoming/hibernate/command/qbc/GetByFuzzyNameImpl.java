@@ -2,10 +2,8 @@ package pers.xiaoming.hibernate.command.qbc;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import pers.xiaoming.hibernate.command.get_interface.GetByFuzzyName;
-import pers.xiaoming.hibernate.command.get_interface.GetTopTenStudents;
 import pers.xiaoming.hibernate.entity.Student;
 
 import java.util.List;

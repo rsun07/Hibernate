@@ -3,13 +3,12 @@ package pers.xiaoming.hibernate.command.qbc;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Restrictions;
-import pers.xiaoming.hibernate.command.get_interface.GetTopTenStudents;
+import pers.xiaoming.hibernate.command.get_interface.GetByOrder;
 import pers.xiaoming.hibernate.entity.Student;
 
 import java.util.List;
 
-public class GetTopTenStudentsImpl implements GetTopTenStudents {
+public class GetByOrderImpl implements GetByOrder {
     @SuppressWarnings("unchecked")
     public List<Student> get(Session session) throws Exception {
         try {

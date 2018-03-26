@@ -5,6 +5,6 @@ import pers.xiaoming.hibernate.entity.Student;
 
 import java.util.List;
 
-public interface GetTopTenStudents {
+public interface GetByOrder {
     List<Student> get(Session session) throws Exception;
 }
