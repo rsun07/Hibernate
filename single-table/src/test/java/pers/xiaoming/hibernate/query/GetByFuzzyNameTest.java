@@ -21,8 +21,8 @@ public class GetByFuzzyNameTest {
     public Object[][] getTopTenStudentDataProvider() {
         return new Object[][] {
                 {new pers.xiaoming.hibernate.command.sql.GetByFuzzyNameImpl()},
-//                {new pers.xiaoming.hibernate.command.hql.GetTopTenStudentsImpl()},
-//                {new pers.xiaoming.hibernate.command.qbc.GetTopTenStudentsImpl()},
+                {new pers.xiaoming.hibernate.command.hql.GetByFuzzyNameImpl()},
+//                {new pers.xiaoming.hibernate.command.qbc.GetByFuzzyNameImpl()},
         };
     }
 }
