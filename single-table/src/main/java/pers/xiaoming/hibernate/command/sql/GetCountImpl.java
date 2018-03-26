@@ -6,7 +6,8 @@ import pers.xiaoming.hibernate.command.get_interface.GetCount;
 import pers.xiaoming.hibernate.entity.Student;
 
 
-// There is a JDBC bug for column name which causes Hibernate to fail in queries.
+// Hibernate may have issue to mapping the count result to
+// given entity Student.class
 public class GetCountImpl implements GetCount {
 
     private final static String QUERY = "SELECT COUNT(t_name) FROM t_student;";

@@ -17,7 +17,7 @@ public class GetCountTest {
     @DataProvider(name = "get_count_impl")
     public Object[][] getByPageDataProvider() {
         return new Object[][] {
-                // ignore sql test due to JDBC bug
+                // ignore sql test
                 // {new pers.xiaoming.hibernate.command.sql.GetCountImpl()},
                 {new pers.xiaoming.hibernate.command.hql.GetCountImpl()},
                 {new pers.xiaoming.hibernate.command.qbc.GetCountImpl()},

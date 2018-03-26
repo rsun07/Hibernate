@@ -8,6 +8,8 @@ import pers.xiaoming.hibernate.entity.Student;
 import java.util.List;
 
 // It's not easy to run projection through sql
+// Hibernate may have issue to mapping the partial result to
+// given entity Student.class
 public class GetProjectionImpl implements GetProjection {
 
     private final static String QUERY = "SELECT t_age, t_score FROM t_student WHERE t_age > ? LIMIT 50;";
