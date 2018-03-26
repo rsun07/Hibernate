@@ -5,18 +5,18 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="pers.xiaoming.hibernate.entity.one_to_many">
     <!--omit table name and attribute names if use same name as Class name and field names-->
-    <class name="City">
+    <class name="City" table="city">
         <id name = "cid" column="id">
             <generator class="native"/>
         </id>
         <property name="cname" column="name"/>
-        <set name="residents" cascade="all">
-            <key column="id"/>
+        <set name="residents" cascade="save-update">
+            <key column="cid"/>
             <one-to-many class="Person"/>
         </set>
     </class>
 
-    <class name="Person">
+    <class name="Person" table="person">
         <id name="pid" column="id">
             <generator class="native"/>
         </id>

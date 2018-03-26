@@ -9,7 +9,7 @@
         <!--hibernate will automatically check the hibernate.properties during initialization-->
 
         <!--Register entity mapping files-->
-        <mapping resource="ont_to_many.hbm.xml"/>
+        <mapping resource="one_to_many.hbm.xml"/>
 
     </session-factory>
 </hibernate-configuration>
