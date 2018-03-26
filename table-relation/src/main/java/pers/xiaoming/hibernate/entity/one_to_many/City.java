@@ -9,6 +9,7 @@ import java.util.Set;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class City {
     private Integer cid;
     private String cname;
