@@ -1,24 +1,22 @@
-package pers.xiaoming.hibernate.command.hql;
+package pers.xiaoming.hibernate.command.qbc;
 
-import org.hibernate.SQLQuery;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Projections;
 import pers.xiaoming.hibernate.command.get_interface.GetCount;
 import pers.xiaoming.hibernate.entity.Student;
 
 public class GetCountImpl implements GetCount {
-
-    private final static String QUERY = "SELECT COUNT(id) FROM Student";
 
     @Override
     public Long get(Session session) {
         try {
             session.beginTransaction();
 
-            // The result, in fact, is a Java Long
-            // In Java, Long cannot be cast to Integer
-            // long could be cast to int
-            // cast Long to Integer, use Long.intValue()
-            Long count = (Long) session.createQuery(QUERY).uniqueResult();
+            Criteria criteria = session.createCriteria(Student.class);
+            criteria.setProjection(Projections.rowCount());
+
+            Long count = (Long) criteria.uniqueResult();
 
             session.getTransaction().commit();
 

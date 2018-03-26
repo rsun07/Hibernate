@@ -20,7 +20,7 @@ public class GetCountTest {
                 // ignore sql test due to JDBC bug
                 // {new pers.xiaoming.hibernate.command.sql.GetCountImpl()},
                 {new pers.xiaoming.hibernate.command.hql.GetCountImpl()},
-//                {new pers.xiaoming.hibernate.command.qbc.GetCountImpl()},
+                {new pers.xiaoming.hibernate.command.qbc.GetCountImpl()},
         };
     }
 }
