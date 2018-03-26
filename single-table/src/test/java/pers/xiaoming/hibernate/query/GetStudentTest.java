@@ -9,13 +9,13 @@ import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 public class GetStudentTest {
 
-    @Test(dataProvider = "get_student")
+    @Test(dataProvider = "get_student_impl")
     public void testGetStudent(GetStudent getStudent) throws Exception {
         Student student = getStudent.get(SessionManager.getSession(), DataProcessor.getIds().get(0));
         Assert.assertTrue(DataProcessor.validateStudent(student));
     }
 
-    @DataProvider(name = "get_student")
+    @DataProvider(name = "get_student_impl")
     public Object[][] getStudentDataProvider() throws Exception {
         return new Object[][] {
                 {new pers.xiaoming.hibernate.command.sql.GetStudentImpl()},

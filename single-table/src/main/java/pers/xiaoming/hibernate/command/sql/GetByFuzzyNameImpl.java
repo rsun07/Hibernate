@@ -10,18 +10,21 @@ import java.util.List;
 public class GetByFuzzyNameImpl implements GetByFuzzyName {
 
     private static final String QUERY = "SELECT t_id, t_name, t_age, t_score FROM t_student " +
-            "WHERE t_name like %?% LIMIT 10";
+            "WHERE t_name LIKE ? LIMIT 10";
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Student> get(Session session, String fuzzyName) throws Exception {
+    public List<Student> get(Session session, String nameLike) throws Exception {
 
         try {
             session.beginTransaction();
 
+            String fuzzyName = getFuzzyName(nameLike);
+
             SQLQuery query = session.createSQLQuery(QUERY);
             query.setString(0, fuzzyName);
             query.addEntity(Student.class);
+
             List<Student> list = query.list();
 
             session.getTransaction().commit();
@@ -32,5 +35,9 @@ public class GetByFuzzyNameImpl implements GetByFuzzyName {
             session.getTransaction().rollback();
             throw e;
         }
+    }
+
+    private String getFuzzyName(String nameLike) {
+        return "%" + nameLike + "%";
     }
 }

@@ -10,13 +10,13 @@ import pers.xiaoming.hibernate.session_factory.SessionManager;
 import java.util.List;
 
 public class GetToptenStudentsTest {
-    @Test(dataProvider = "get_topten_student")
+    @Test(dataProvider = "get_topten_student_impl")
     public void testGetTopTenStudents(GetTopTenStudents getStudents) throws Exception {
         List<Student> students = getStudents.get(SessionManager.getSession());
-        Assert.assertEquals(10, students.size());
+        Assert.assertEquals(DataProcessor.getNUM_OF_DATA_GENERATE(), students.size());
     }
 
-    @DataProvider(name = "get_topten_student")
+    @DataProvider(name = "get_topten_student_impl")
     public Object[][] getTopTenStudentDataProvider() {
         return new Object[][] {
                 {new pers.xiaoming.hibernate.command.sql.GetTopTenStudentsImpl()},

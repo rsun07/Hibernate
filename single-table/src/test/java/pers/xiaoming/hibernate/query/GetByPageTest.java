@@ -10,7 +10,7 @@ import pers.xiaoming.hibernate.session_factory.SessionManager;
 import java.util.List;
 
 public class GetByPageTest {
-    @Test(dataProvider = "get_by_page")
+    @Test(dataProvider = "get_by_page_impl")
     public void testGetByPage(GetByPage getByPage) throws Exception {
         int pageSize = 2;
         int startIndex = 6;
@@ -19,7 +19,7 @@ public class GetByPageTest {
         Assert.assertEquals(pageSize, students.size());
     }
 
-    @DataProvider(name = "get_by_page")
+    @DataProvider(name = "get_by_page_impl")
     public Object[][] getByPageDataProvider() {
         return new Object[][] {
                 {new pers.xiaoming.hibernate.command.sql.GetByPageImpl()},

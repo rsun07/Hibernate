@@ -1,5 +1,6 @@
 package pers.xiaoming.hibernate.query;
 
+import lombok.Getter;
 import org.hibernate.Session;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -12,13 +13,22 @@ import java.util.List;
 
 public class DataProcessor {
 
+    @Getter
     private static final int NUM_OF_DATA_GENERATE = 10;
-    private static List<Integer> ids;
-    private static List<Student> students;
 
-    public static List<Integer> getIds() {
-        return ids;
-    }
+    @Getter
+    private static final String NAME_PREFIX = "John";
+
+    @Getter
+    private static final int AGE_START = 20;
+
+    @Getter
+    private static final double SCORE_START = 80;
+
+    @Getter
+    private static List<Integer> ids;
+
+    private static List<Student> students;
 
     @BeforeTest
     public static void dbDataPrepare() throws Exception {
