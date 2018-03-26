@@ -6,5 +6,5 @@ import pers.xiaoming.hibernate.entity.Student;
 import java.util.List;
 
 public interface GetByOrder {
-    List<Student> get(Session session) throws Exception;
+    List<Student> get(Session session, String orderByField, int maxResult) throws Exception;
 }
