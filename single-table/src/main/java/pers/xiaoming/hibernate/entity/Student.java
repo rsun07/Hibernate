@@ -16,4 +16,10 @@ public class Student {
     private String name;
     private Integer age;
     private Double score;
+
+    // Constructor for projection age and score
+    public Student(Integer age, Double score) {
+        this.age = age;
+        this.score = score;
+    }
 }

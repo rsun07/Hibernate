@@ -32,8 +32,8 @@ public class GetProjectionTest {
                 // It's not easy to run projection using sql
                 // ignore it
                 // {new pers.xiaoming.hibernate.command.sql.GetProjectionImpl()},
-//                {new pers.xiaoming.hibernate.command.hql.GetCountImpl()},
-//                {new pers.xiaoming.hibernate.command.qbc.GetCountImpl()},
+                {new pers.xiaoming.hibernate.command.hql.GetProjectionImpl()},
+//                {new pers.xiaoming.hibernate.command.qbc.GetProjectionImpl()},
         };
     }
 }
