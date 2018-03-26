@@ -8,19 +8,29 @@ import pers.xiaoming.hibernate.entity.Student;
 import java.util.List;
 
 public class GetByOrderImpl implements GetByOrder {
-    private final static String QUERY = "SELECT t_id, t_name, t_age, t_score FROM t_student ORDER BY ? DESC LIMIT ?;";
+
+    // It's dangerous to set String into wildcard
+    // So here by default, only support order by score
+    // If want to support more fields, need to manually specify different queries
+    // Dangerous!!!:
+    // private final static String QUERY = "SELECT t_id, t_name, t_age, t_score FROM t_student ORDER BY ? ? LIMIT ?;";
+
+    private final static String QUERY_DESC = "SELECT t_id, t_name, t_age, t_score FROM t_student ORDER BY t_score DESC LIMIT ?;";
+
+    private final static String QUERY_ASC = "SELECT t_id, t_name, t_age, t_score FROM t_student ORDER BY t_score ASC LIMIT ?;";
 
     @SuppressWarnings("unchecked")
-    public List<Student> get(Session session, String orderByField, int maxResult) throws Exception {
+    public List<Student> get(Session session, String orderByField, QueryOrder queryOrder, int maxResult) throws Exception {
         try {
             session.beginTransaction();
 
-            Query query = session.createSQLQuery(QUERY)
-                    .addEntity(Student.class);
-            query.setString(0, orderByField);
-            query.setInteger(1, maxResult);
+            String query = queryOrder.equals(QueryOrder.DESC) ? QUERY_DESC : QUERY_ASC;
 
-            List<Student> students = query.list();
+            Query sqlQuery = session.createSQLQuery(query)
+                    .addEntity(Student.class);
+            sqlQuery.setInteger(0, maxResult);
+
+            List<Student> students = sqlQuery.list();
 
             session.getTransaction().commit();
             return students;

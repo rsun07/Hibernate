@@ -10,12 +10,21 @@ import java.util.List;
 
 public class GetByOrderImpl implements GetByOrder {
     @SuppressWarnings("unchecked")
-    public List<Student> get(Session session, String orderByField, int maxResult) throws Exception {
+    public List<Student> get(Session session, String orderByField, QueryOrder queryOrder, int maxResult) throws Exception {
         try {
             session.beginTransaction();
 
             Criteria criteria = session.createCriteria(Student.class);
-            criteria.addOrder(Order.desc(orderByField));
+
+            Order criteriaOrder;
+
+            if (queryOrder.equals(QueryOrder.DESC)) {
+                criteriaOrder = Order.desc(orderByField);
+            } else {
+                criteriaOrder = Order.asc(orderByField);
+            }
+
+            criteria.addOrder(criteriaOrder);
             criteria.setMaxResults(maxResult);
 
             List<Student> list = criteria.list();

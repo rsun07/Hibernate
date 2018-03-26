@@ -9,7 +9,7 @@ import java.util.List;
 public class GetByFuzzyNameImpl implements GetByFuzzyName {
 
     // unlike sql, hql specify letter cases
-    private final static String HQL_QUERY = "FROM Student WHERE name like :fuzzyName";
+    private final static String QUERY = "FROM Student WHERE name like :fuzzyName";
 
     @SuppressWarnings("unchecked")
     public List<Student> get(Session session, String nameLike) throws Exception {
@@ -17,7 +17,7 @@ public class GetByFuzzyNameImpl implements GetByFuzzyName {
             session.beginTransaction();
 
             // no need for addEntity()
-            List<Student> list = session.createQuery(HQL_QUERY)
+            List<Student> list = session.createQuery(QUERY)
                     .setParameter("fuzzyName", getFuzzyName(nameLike))
                     .setMaxResults(10).list();
 
