@@ -4,13 +4,13 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pers.xiaoming.hibernate.command.get_interface.GetCount;
-import pers.xiaoming.hibernate.session_factory.SessionManager;
+import pers.xiaoming.hibernate.session_factory.SessionFactory;
 
 public class GetCountTest {
     @Test(dataProvider = "get_count_impl")
     public void testGetByPage(GetCount getCount) throws Exception {
 
-        int count = getCount.get(SessionManager.getSession()).intValue();
+        int count = getCount.get(SessionFactory.getSession()).intValue();
         Assert.assertEquals(DataProcessor.getNUM_OF_DATA_GENERATE(), count);
     }
 

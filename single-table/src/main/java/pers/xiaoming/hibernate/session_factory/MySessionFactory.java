@@ -1,20 +1,20 @@
-package pers.xiaoming.hibernate;
+package pers.xiaoming.hibernate.session_factory;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class SessionManager implements AutoCloseable {
-    private static final String CONFIG_NAME = "hibernate.cfg.xml";
-    private static SessionFactory sessionFactory;
+public class MySessionFactory implements AutoCloseable {
+    private static final String CONFIG_NAME = "my.cfg.xml";
 
-    private SessionManager() {
+    private static org.hibernate.SessionFactory sessionFactory;
+
+    private MySessionFactory() {
 
     }
 
     public static Session getSession() {
         if (sessionFactory == null) {
-            synchronized (SessionManager.class) {
+            synchronized (SessionFactory.class) {
                 sessionFactory = initSession();
             }
         }
@@ -22,11 +22,11 @@ public class SessionManager implements AutoCloseable {
     }
 
     @SuppressWarnings("UnnecessaryLocalVariable")
-    private static SessionFactory initSession() {
+    private static org.hibernate.SessionFactory initSession() {
         // pass config file name into the configure() function
         Configuration config = new Configuration().configure(CONFIG_NAME);
 
-        SessionFactory sessionFactory = config.buildSessionFactory();
+        org.hibernate.SessionFactory sessionFactory = config.buildSessionFactory();
 
         return sessionFactory;
     }

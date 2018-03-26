@@ -3,7 +3,7 @@ package pers.xiaoming.hibernate.one_to_many;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pers.xiaoming.hibernate.SessionManager;
+import pers.xiaoming.hibernate.SessionFactory;
 import pers.xiaoming.hibernate.command.GetEntity;
 import pers.xiaoming.hibernate.command.one_to_many.CreateCity;
 import pers.xiaoming.hibernate.command.one_to_many.GetPerson;
@@ -31,7 +31,7 @@ public class CreateTest {
     @Test
     public void testCreate() throws Exception {
         CreateCity createCity = new CreateCity();
-        createCity.create(SessionManager.getSession(), city);
+        createCity.create(SessionFactory.getSession(), city);
         verifyCreate();
     }
 
@@ -39,7 +39,7 @@ public class CreateTest {
         GetEntity<Person> getPerson = new GetPerson();
         for (Person person : residents) {
             Assert.assertEquals(person, getPerson.get(
-                    SessionManager.getSession(),
+                    SessionFactory.getSession(),
                     person.getId()));
         }
     }
