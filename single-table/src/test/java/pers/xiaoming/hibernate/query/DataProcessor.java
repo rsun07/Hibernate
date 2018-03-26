@@ -10,6 +10,7 @@ import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class DataProcessor {
 
@@ -36,9 +37,23 @@ public class DataProcessor {
         ids = new ArrayList<>();
         students = new ArrayList<>();
 
+        Random random = new Random();
+
+        /*
+         *
+         * The result will be :
+         * name: John0, John1, John2 ... John9
+         * age: 20, 21, 22, 20, 21, 22 ...
+         * score: integer between 80 and 100
+         *
+         */
+
         for (int i = 0; i < NUM_OF_DATA_GENERATE; i++) {
-            Student student = Student.builder().name("John" + i)
-                    .age(20 + i).score(80.0 + i).build();
+            Student student = Student.builder()
+                    .name("John" + i)
+                    .age(20 + i%3)
+                    .score(80.0 + random.nextInt(20))
+                    .build();
             students.add(student);
 
             Session session = SessionManager.getSession();
