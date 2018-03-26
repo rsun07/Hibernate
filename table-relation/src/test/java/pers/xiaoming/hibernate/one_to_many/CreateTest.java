@@ -4,8 +4,9 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pers.xiaoming.hibernate.SessionManager;
+import pers.xiaoming.hibernate.command.GetEntity;
 import pers.xiaoming.hibernate.command.one_to_many.CreateCity;
-import pers.xiaoming.hibernate.command.one_to_many.GetFromTable;
+import pers.xiaoming.hibernate.command.one_to_many.GetPerson;
 import pers.xiaoming.hibernate.entity.one_to_many.City;
 import pers.xiaoming.hibernate.entity.one_to_many.Person;
 
@@ -31,13 +32,13 @@ public class CreateTest {
     public void testCreate() throws Exception {
         CreateCity createCity = new CreateCity();
         createCity.create(SessionManager.getSession(), city);
+        verifyCreate();
     }
 
-    @Test(dependsOnMethods = "testCreate")
-    public void testGet() {
-        GetFromTable getFromDb = new GetFromTable();
+    private void verifyCreate() {
+        GetEntity<Person> getPerson = new GetPerson();
         for (Person person : residents) {
-            Assert.assertEquals(person, getFromDb.getPerson(
+            Assert.assertEquals(person, getPerson.get(
                     SessionManager.getSession(),
                     person.getPid()));
         }

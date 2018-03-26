@@ -1,22 +1,39 @@
 package pers.xiaoming.hibernate.self_relation;
 
+import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pers.xiaoming.hibernate.SessionManager;
+import pers.xiaoming.hibernate.command.GetEntity;
 import pers.xiaoming.hibernate.command.self_relation.CreateEmployee;
+import pers.xiaoming.hibernate.command.self_relation.GetEmployee;
 import pers.xiaoming.hibernate.entity.self_relation.Employee;
 
 public class CreateTest {
+    private Employee manager;
+
+    @BeforeTest
+    public void setup() {
+        manager = new Employee("John", "CEO");
+        manager.getSubordinators().add(new Employee("Marry", "HR"));
+        manager.getSubordinators().add(new Employee("Mike", "SDE"));
+    }
 
     @Test
     public void testCreate() throws Exception {
-        Employee manager = new Employee("John", "CEO");
-        Employee hr = new Employee("Marry", "HR");
-        Employee sde = new Employee("Mike", "SDE");
-
-        manager.getSubordinators().add(hr);
-        manager.getSubordinators().add(sde);
-
         CreateEmployee createEmployee = new CreateEmployee();
         createEmployee.create(SessionManager.getSession(), manager);
+        verifyCreate();
+    }
+
+    private void verifyCreate() throws Exception {
+        GetEntity<Employee> getEmployee = new GetEmployee();
+        // TODO: select from foreigner key
+        // Assert.assertEquals(manager, getEmployee.get(SessionManager.getSession(), manager.getId()));
+
+        // Cannot get the manager field from employee
+        for (Employee employee : manager.getSubordinators()) {
+            // Assert.assertEquals(employee, getEmployee.get(SessionManager.getSession(), employee.getId()));
+        }
     }
 }
