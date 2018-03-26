@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="pers.xiaoming.hibernate.entity.one_to_many_mutual">
+    <!--omit table name and attribute names if use same name as Class name and field names-->
+    <class name="CityM" table="city">
+        <id name = "id">
+            <generator class="native"/>
+        </id>
+        <property name="name"/>
+        <set name="residents" cascade="save-update">
+
+            <key column="county_id"/>
+            <one-to-many class="Person"/>
+        </set>
+    </class>
+
+    <class name="PersonM" table="person">
+        <id name="id">
+            <generator class="native"/>
+        </id>
+        <property name="name"/>
+        <many-to-one name="city" class="CityM"cascade="save-update"/>
+    </class>
+
+</hibernate-mapping>

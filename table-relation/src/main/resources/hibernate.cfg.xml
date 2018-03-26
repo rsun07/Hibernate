@@ -10,6 +10,7 @@
 
         <!--Register entity mapping files-->
         <mapping resource="one_to_many.hbm.xml"/>
+        <mapping resource="one_to_many_mutual.hbm.xml"/>
         <mapping resource="self_relation.hbm.xml"/>
 
     </session-factory>
