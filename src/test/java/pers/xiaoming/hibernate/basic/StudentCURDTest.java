@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pers.xiaoming.hibernate.command.basic.CURDStudentBasic;
 import pers.xiaoming.hibernate.entity.Student;
-import pers.xiaoming.hibernate.session_factory.Server;
+import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 public class StudentCURDTest {
     private static CURDStudentBasic dbOperator;
@@ -21,7 +21,7 @@ public class StudentCURDTest {
 
     @Test
     public void testCreate() {
-        id = dbOperator.create(Server.getSession(), student);
+        id = dbOperator.create(SessionManager.getSession(), student);
         testGet();
     }
 
@@ -29,27 +29,27 @@ public class StudentCURDTest {
     public void testUpdate() {
         student.setAge(22);
         student.setScore(90.5);
-        dbOperator.update(Server.getSession(), student);
+        dbOperator.update(SessionManager.getSession(), student);
         testGet();
     }
 
     @Test(dependsOnMethods = "testUpdate")
     public void testDelete() {
-        dbOperator.delete(Server.getSession(), id);
+        dbOperator.delete(SessionManager.getSession(), id);
         student = null;
         testGet();
     }
 
 
     private void testGet() {
-        Student studentGetFromDb = dbOperator.get(Server.getSession(), id);
+        Student studentGetFromDb = dbOperator.get(SessionManager.getSession(), id);
         Assert.assertEquals(student, studentGetFromDb);
     }
 
     @AfterTest
     public void cleanup() {
         try {
-            dbOperator.delete(Server.getSession(), id);
+            dbOperator.delete(SessionManager.getSession(), id);
         } catch (Exception e) {
             // ignore
         }
