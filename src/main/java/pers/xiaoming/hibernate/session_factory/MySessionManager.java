@@ -4,18 +4,18 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class MyServer implements AutoCloseable {
+public class MySessionManager implements AutoCloseable {
     private static final String CONFIG_NAME = "my.cfg.xml";
 
     private static SessionFactory sessionFactory;
 
-    private MyServer() {
+    private MySessionManager() {
 
     }
 
     public static Session getSession() {
         if (sessionFactory == null) {
-            synchronized (Server.class) {
+            synchronized (SessionManager.class) {
                 sessionFactory = initSession();
             }
         }

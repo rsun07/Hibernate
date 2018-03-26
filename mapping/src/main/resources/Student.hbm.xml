@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="pers.xiaoming.hibernate.entity">
+    <!--The functionality of mapping class
+        1. Class to Table mapping
+        2. Fields to Attributes mapping
+    -->
+    <class name="Student" table="t_student">
+        <id name = "id" column="t_id">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="t_name"/>
+        <property name="age" column="t_age"/>
+        <property name="score" column="t_score"/>
+        <!--If field name is the same as property name-->
+        <!--<property name="name"/>-->
+        <!--<property name="age"/>-->
+        <!--<property name="score"/>-->
+    </class>
+</hibernate-mapping>

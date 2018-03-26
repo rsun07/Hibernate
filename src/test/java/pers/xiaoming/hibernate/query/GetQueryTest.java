@@ -8,7 +8,7 @@ import pers.xiaoming.hibernate.command.get_interface.GetByPage;
 import pers.xiaoming.hibernate.command.get_interface.GetStudent;
 import pers.xiaoming.hibernate.command.get_interface.GetTopTenStudents;
 import pers.xiaoming.hibernate.entity.Student;
-import pers.xiaoming.hibernate.session_factory.Server;
+import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class GetQueryTest {
 
     @Test(dataProvider = "get_student")
     public void testGetStudent(GetStudent getStudent) {
-        Student student = getStudent.get(Server.getSession(), ids.get(0));
+        Student student = getStudent.get(SessionManager.getSession(), ids.get(0));
         Assert.assertTrue(DataProcessor.validateStudent(student));
     }
 
@@ -37,7 +37,7 @@ public class GetQueryTest {
 
     @Test(dataProvider = "get_topten_student")
     public void testGetTopTenStudents(GetTopTenStudents getStudents) {
-        List<Student> students = getStudents.get(Server.getSession());
+        List<Student> students = getStudents.get(SessionManager.getSession());
         Assert.assertEquals(10, students.size());
     }
 
@@ -55,7 +55,7 @@ public class GetQueryTest {
         int pageSize = 2;
         int startIndex = 6;
 
-        List<Student> students = getByPage.get(Server.getSession(), startIndex, pageSize);
+        List<Student> students = getByPage.get(SessionManager.getSession(), startIndex, pageSize);
         Assert.assertEquals(pageSize, students.size());
     }
 

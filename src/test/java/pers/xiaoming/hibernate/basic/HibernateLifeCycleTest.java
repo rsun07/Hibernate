@@ -5,8 +5,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import pers.xiaoming.hibernate.command.basic.CURDStudentBasic;
 import pers.xiaoming.hibernate.entity.Student;
-import pers.xiaoming.hibernate.session_factory.MyServer;
-import pers.xiaoming.hibernate.session_factory.Server;
+import pers.xiaoming.hibernate.session_factory.MySessionManager;
 
 
 public class HibernateLifeCycleTest {
@@ -24,8 +23,8 @@ public class HibernateLifeCycleTest {
 
         Assert.assertNull(student.getId());
 
-        // here use MyServer, my.cfg.xml with hibernate.properties
-        this.id = dbOperator.create(MyServer.getSession(), student);
+        // here use MySessionManager, my.cfg.xml with hibernate.properties
+        this.id = dbOperator.create(MySessionManager.getSession(), student);
 
         Student studentAfterCreate = student;
 
@@ -40,6 +39,6 @@ public class HibernateLifeCycleTest {
     @AfterClass
     public void cleanup() {
         CURDStudentBasic dbOperator = new CURDStudentBasic();
-        dbOperator.delete(MyServer.getSession(), this.id);
+        dbOperator.delete(MySessionManager.getSession(), this.id);
     }
 }
