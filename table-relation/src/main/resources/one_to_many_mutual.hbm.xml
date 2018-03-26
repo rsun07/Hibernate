@@ -12,7 +12,7 @@
         <property name="name"/>
         <set name="residents" cascade="save-update">
 
-            <key column="county_id"/>
+            <key column="city_id"/>
             <one-to-many class="Person"/>
         </set>
     </class>
@@ -22,7 +22,7 @@
             <generator class="native"/>
         </id>
         <property name="name"/>
-        <many-to-one name="city" class="CityM"cascade="save-update"/>
+        <many-to-one name="city" class="CityM"cascade="save-update" column="city_id"/>
     </class>
 
 </hibernate-mapping>
