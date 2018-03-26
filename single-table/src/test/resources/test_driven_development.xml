@@ -14,8 +14,7 @@
     <test name="Select Tests for SQL, HQL, QBC">
         <classes>
             <class name="pers.xiaoming.hibernate.query.DataProcessor"/>
-            <class name="pers.xiaoming.hibernate.query.GetQueryTest">
-            </class>
+            <!--<class name="pers.xiaoming.hibernate.query.GetQueryTest"/>-->
         </classes>
     </test>
 </suite>
