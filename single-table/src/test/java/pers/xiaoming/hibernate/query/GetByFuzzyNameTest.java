@@ -22,7 +22,7 @@ public class GetByFuzzyNameTest {
         return new Object[][] {
                 {new pers.xiaoming.hibernate.command.sql.GetByFuzzyNameImpl()},
                 {new pers.xiaoming.hibernate.command.hql.GetByFuzzyNameImpl()},
-//                {new pers.xiaoming.hibernate.command.qbc.GetByFuzzyNameImpl()},
+                {new pers.xiaoming.hibernate.command.qbc.GetByFuzzyNameImpl()},
         };
     }
 }
