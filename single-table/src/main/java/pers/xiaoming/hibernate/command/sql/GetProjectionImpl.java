@@ -7,6 +7,7 @@ import pers.xiaoming.hibernate.entity.Student;
 
 import java.util.List;
 
+// It's not easy to run projection through sql
 public class GetProjectionImpl implements GetProjection {
 
     private final static String QUERY = "SELECT t_age, t_score FROM t_student WHERE t_age > ? LIMIT 50;";
@@ -17,8 +18,8 @@ public class GetProjectionImpl implements GetProjection {
             session.beginTransaction();
 
             SQLQuery query = session.createSQLQuery(QUERY);
-            query.setInteger(0, age);
             query.addEntity(Student.class);
+            query.setInteger(0, age);
             List<Student> list = query.list();
 
             session.getTransaction().commit();

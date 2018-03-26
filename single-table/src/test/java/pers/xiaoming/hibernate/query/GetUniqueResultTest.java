@@ -4,7 +4,6 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pers.xiaoming.hibernate.command.get_interface.GetUniqueResult;
-import pers.xiaoming.hibernate.command.sql.GetUniqueResultImpl;
 import pers.xiaoming.hibernate.entity.Student;
 import pers.xiaoming.hibernate.session_factory.SessionFactory;
 
@@ -19,7 +18,7 @@ public class GetUniqueResultTest {
     @DataProvider(name = "get_student_impl")
     public Object[][] getStudentDataProvider() throws Exception {
         return new Object[][] {
-                {new GetUniqueResultImpl()},
+                {new pers.xiaoming.hibernate.command.sql.GetUniqueResultImpl()},
                 {new pers.xiaoming.hibernate.command.hql.GetUniqueResultImpl()},
                 {new pers.xiaoming.hibernate.command.qbc.GetUniqueResultImpl()},
         };
