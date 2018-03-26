@@ -5,11 +5,11 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="pers.xiaoming.hibernate.entity.one_to_many">
     <!--omit table name and attribute names if use same name as Class name and field names-->
-    <class name="City" table="city">
-        <id name = "cid" column="id">
+    <class name="City">
+        <id name = "id">
             <generator class="native"/>
         </id>
-        <property name="cname" column="name"/>
+        <property name="name"/>
         <set name="residents" cascade="save-update">
             <!--This column name will be used to define foreigner key in current table-->
             <!--So the name should NOT duplicate with primary key-->
@@ -18,11 +18,11 @@
         </set>
     </class>
 
-    <class name="Person" table="person">
-        <id name="pid" column="id">
+    <class name="Person">
+        <id name="id">
             <generator class="native"/>
         </id>
-        <property name="pname" column="name"/>
+        <property name="name"/>
     </class>
 
 </hibernate-mapping>

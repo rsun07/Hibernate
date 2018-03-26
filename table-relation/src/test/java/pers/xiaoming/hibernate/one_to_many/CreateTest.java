@@ -40,7 +40,7 @@ public class CreateTest {
         for (Person person : residents) {
             Assert.assertEquals(person, getPerson.get(
                     SessionManager.getSession(),
-                    person.getPid()));
+                    person.getId()));
         }
     }
 }

@@ -11,17 +11,17 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class City {
-    private Integer cid;
-    private String cname;
+    private Integer id;
+    private String name;
     private Set<Person> residents;
 
-    public City(String cname) {
-        this.cname = cname;
+    public City(String name) {
+        this.name = name;
         this.residents = new HashSet<>();
     }
 
-    public City(String cname, Set<Person> residents) {
-        this.cname = cname;
+    public City(String name, Set<Person> residents) {
+        this.name = name;
         this.residents = residents;
     }
 }

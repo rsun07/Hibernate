@@ -8,10 +8,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Person {
-    private Integer pid;
-    private String pname;
+    private Integer id;
+    private String name;
 
-    public Person(String pname) {
-        this.pname = pname;
+    public Person(String name) {
+        this.name = name;
     }
 }
