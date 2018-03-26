@@ -13,4 +13,9 @@ public class City {
     private Integer cid;
     private String cname;
     private Set<Person> residents;
+
+    public City(String cname, Set<Person> residents) {
+        this.cname = cname;
+        this.residents = residents;
+    }
 }

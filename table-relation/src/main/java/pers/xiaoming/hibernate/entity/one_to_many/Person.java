@@ -10,4 +10,8 @@ import lombok.NoArgsConstructor;
 public class Person {
     private Integer pid;
     private String pname;
+
+    public Person(String pname) {
+        this.pname = pname;
+    }
 }

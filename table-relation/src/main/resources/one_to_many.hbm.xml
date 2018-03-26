@@ -4,20 +4,23 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="pers.xiaoming.hibernate.entity.one_to_many">
-    <!--The functionality of mapping class
-        1. Class to Table mapping
-        2. Fields to Attributes mapping
-    -->
-    <class name="Student" table="t_student">
-        <id name = "id" column="t_id">
+    <!--omit table name and attribute names if use same name as Class name and field names-->
+    <class name="City">
+        <id name = "cid" column="id">
             <generator class="native"/>
         </id>
-        <property name="name" column="t_name"/>
-        <property name="age" column="t_age"/>
-        <property name="score" column="t_score"/>
-        <!--If field name is the same as property name-->
-        <!--<property name="name"/>-->
-        <!--<property name="age"/>-->
-        <!--<property name="score"/>-->
+        <property name="cname" column="name"/>
+        <set name="residents" cascade="all">
+            <key column="id"/>
+            <one-to-many class="Person"/>
+        </set>
     </class>
+
+    <class name="Person">
+        <id name="pid" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="pname" column="name"/>
+    </class>
+
 </hibernate-mapping>
