@@ -10,13 +10,14 @@
             <generator class="native"/>
         </id>
         <property name="name"/>
+        <property name="title"/>
         <set name="subordinators" cascade="save-update">
             <!--This column name will be used to define foreigner key -->
             <!--So the name should NOT duplicate with primary key-->
-            <key column="manager_id"/>
+            <key column="manager"/>
             <one-to-many class="Employee"/>
         </set>
-        <many-to-one name="manager" cascade="save-update" class="Employee" column="subordinator_id"/>
+        <many-to-one name="manager" cascade="save-update" class="Employee"/>
     </class>
 
 </hibernate-mapping>

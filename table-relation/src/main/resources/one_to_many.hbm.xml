@@ -11,9 +11,9 @@
         </id>
         <property name="cname" column="name"/>
         <set name="residents" cascade="save-update">
-            <!--This column name will be used to define foreigner key -->
+            <!--This column name will be used to define foreigner key in current table-->
             <!--So the name should NOT duplicate with primary key-->
-            <key column="cid"/>
+            <key column="county_id"/>
             <one-to-many class="Person"/>
         </set>
     </class>

@@ -8,6 +8,8 @@ public class CreateEmployee {
         try {
             session.beginTransaction();
 
+            // self relation is just a special case of one-to-may
+            // in this case, the 'one' and 'many' share the same Class/Table
             session.save(employee);
 
             session.getTransaction().commit();

@@ -12,7 +12,7 @@ import pers.xiaoming.hibernate.entity.one_to_many.Person;
 import java.util.HashSet;
 import java.util.Set;
 
-public class createTest {
+public class CreateTest {
     private Set<Person> residents;
     private City city;
 
