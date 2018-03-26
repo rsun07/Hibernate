@@ -10,8 +10,8 @@
             <generator class="native"/>
         </id>
         <property name="name"/>
-        <set name="residents" cascade="save-update">
-
+        <!--inverse = true means give up relation-->
+        <set name="residents" cascade="save-update" inverse="true">
             <key column="city_id"/>
             <one-to-many class="PersonM"/>
         </set>
