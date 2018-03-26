@@ -3,12 +3,10 @@ package pers.xiaoming.hibernate.command.qbc;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
-import pers.xiaoming.hibernate.command.get_interface.GetStudent;
+import pers.xiaoming.hibernate.command.get_interface.GetUniqueResult;
 import pers.xiaoming.hibernate.entity.Student;
 
-import java.util.List;
-
-public class GetStudentImpl implements GetStudent {
+public class GetUniqueResultImpl implements GetUniqueResult {
 
     @SuppressWarnings("unchecked")
     public Student get(Session session, int id) throws Exception {
