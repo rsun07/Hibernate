@@ -8,20 +8,23 @@ import pers.xiaoming.hibernate.entity.Student;
 import java.util.List;
 
 public class GetByGroupImpl implements GetByGroup {
-    private static final String QUERY = "SELECT t_id, t_name, t_age, t_score FROM t_student " +
-            "GROUP BY t_age HAVING count(t_age) > :appearance";
+    private static final String QUERY = "SELECT t_age age FROM t_student " +
+            "GROUP BY age HAVING count(age) > :appearance";
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Student> get(Session session, int appearance) {
+    public List<Object> get(Session session, int appearance) {
         try {
             session.beginTransaction();
 
             SQLQuery query = session.createSQLQuery(QUERY);
-            query.setInteger(0, appearance);
-            query.addEntity(Student.class);
+            query.setParameter("appearance", appearance);
 
-            List<Student> list = query.list();
+            // Same as Projection
+            // No need for entity here
+            // query.addEntity(Student.class);
+
+            List<Object> list = query.list();
 
             session.getTransaction().commit();
 
