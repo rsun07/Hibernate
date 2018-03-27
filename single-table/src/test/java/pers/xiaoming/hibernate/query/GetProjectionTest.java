@@ -31,9 +31,9 @@ public class GetProjectionTest {
         return new Object[][] {
                 // It's not easy to run projection using sql
                 // ignore it
-                // {new pers.xiaoming.hibernate.command.sql.GetProjectionImpl()},
+                 {new pers.xiaoming.hibernate.command.sql.GetProjectionImpl()},
                 {new pers.xiaoming.hibernate.command.hql.GetProjectionImpl()},
-                {new pers.xiaoming.hibernate.command.qbc.GetProjectionImpl()},
+                // {new pers.xiaoming.hibernate.command.qbc.GetProjectionImpl()},
         };
     }
 }
