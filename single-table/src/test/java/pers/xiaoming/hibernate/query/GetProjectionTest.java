@@ -33,7 +33,7 @@ public class GetProjectionTest {
                 // ignore it
                 // {new pers.xiaoming.hibernate.command.sql.GetProjectionImpl()},
                 {new pers.xiaoming.hibernate.command.hql.GetProjectionImpl()},
-//                {new pers.xiaoming.hibernate.command.qbc.GetProjectionImpl()},
+                {new pers.xiaoming.hibernate.command.qbc.GetProjectionImpl()},
         };
     }
 }

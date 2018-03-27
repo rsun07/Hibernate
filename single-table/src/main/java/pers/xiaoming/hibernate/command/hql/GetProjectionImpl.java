@@ -9,7 +9,6 @@ import java.util.List;
 
 public class GetProjectionImpl implements GetProjection {
 
-    // unlike sql, hql specify letter cases
     private final static String QUERY = "SELECT new Student(age, score) FROM Student WHERE age > :age";
 
     @SuppressWarnings("unchecked")
@@ -18,13 +17,14 @@ public class GetProjectionImpl implements GetProjection {
             session.beginTransaction();
 
             // no need for addEntity()
-            List<Student> list = session.createQuery(QUERY)
+            List<Student> students = session.createQuery(QUERY)
                     .setParameter("age", age)
                     // just for save, not crash the memory
                     .setMaxResults(50).list();
 
             session.getTransaction().commit();
-            return list;
+
+            return students;
 
         } catch (Exception e) {
             session.getTransaction().rollback();

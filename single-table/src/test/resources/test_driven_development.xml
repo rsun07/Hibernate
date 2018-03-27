@@ -14,7 +14,7 @@
     <test name="Select Tests for SQL, HQL, QBC">
         <classes>
             <class name="pers.xiaoming.hibernate.query.DataProcessor"/>
-            <class name="pers.xiaoming.hibernate.query.GetProjectionTest"/>
+            <class name="pers.xiaoming.hibernate.query.GetCountTest"/>
         </classes>
     </test>
 </suite>
