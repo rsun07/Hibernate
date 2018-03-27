@@ -10,7 +10,7 @@ import java.util.List;
 
 public class GetByGroupTest {
     @Test(dataProvider = "get_by_group_impl")
-    public void testGetByPage(GetByGroup getByGroup) throws Exception {
+    public void testGetByGroup(GetByGroup getByGroup) throws Exception {
         // only age 20 will appear more than 3 times
         int appearance = 3;
 
@@ -26,7 +26,7 @@ public class GetByGroupTest {
     public Object[][] getByPageDataProvider() {
         return new Object[][] {
                 {new pers.xiaoming.hibernate.command.sql.GetByGroupImpl()},
-//                {new pers.xiaoming.hibernate.command.hql.GetByGroupImpl()},
+                {new pers.xiaoming.hibernate.command.hql.GetByGroupImpl()},
 //                {new pers.xiaoming.hibernate.command.qbc.GetByGroupImpl()},
         };
     }
