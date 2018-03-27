@@ -29,11 +29,9 @@ public class GetProjectionTest {
     @DataProvider(name = "get_projection_impl")
     public Object[][] getByPageDataProvider() {
         return new Object[][] {
-                // It's not easy to run projection using sql
-                // ignore it
-                 {new pers.xiaoming.hibernate.command.sql.GetProjectionImpl()},
+                {new pers.xiaoming.hibernate.command.sql.GetProjectionImpl()},
                 {new pers.xiaoming.hibernate.command.hql.GetProjectionImpl()},
-                // {new pers.xiaoming.hibernate.command.qbc.GetProjectionImpl()},
+                {new pers.xiaoming.hibernate.command.qbc.GetProjectionImpl()},
         };
     }
 }

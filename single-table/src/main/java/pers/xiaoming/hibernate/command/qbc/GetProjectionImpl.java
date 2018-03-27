@@ -23,8 +23,11 @@ public class GetProjectionImpl implements GetProjection {
 
             // set projection list
             ProjectionList projectionList = Projections.projectionList();
-            projectionList.add(Projections.property("age"));
-            projectionList.add(Projections.property("score"));
+
+            // similar to that in sql
+            // must set alias to allow the aliasToBean() Transformer to do the projection
+            projectionList.add(Projections.property("age"), "age");
+            projectionList.add(Projections.property("score"), "score");
             criteria.setProjection(projectionList);
 
             criteria.add(Restrictions.gt("age", age));
