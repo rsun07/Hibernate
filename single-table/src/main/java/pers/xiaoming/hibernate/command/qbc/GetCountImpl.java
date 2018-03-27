@@ -16,6 +16,9 @@ public class GetCountImpl implements GetCount {
             Criteria criteria = session.createCriteria(Student.class);
             criteria.setProjection(Projections.rowCount());
 
+            // same as
+            // criteria.setProjection(Projections.count("id"));
+
             Long count = (Long) criteria.uniqueResult();
 
             session.getTransaction().commit();
