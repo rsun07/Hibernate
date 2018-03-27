@@ -28,7 +28,7 @@ public class GetByGroupTest {
                 {new pers.xiaoming.hibernate.command.sql.GetByGroupImpl()},
                 {new pers.xiaoming.hibernate.command.hql.GetByGroupImpl()},
                 // Criteria doesn't support HAVING operation
-                // {new pers.xiaoming.hibernate.command.qbc.GetByGroupImpl()},
+                {new pers.xiaoming.hibernate.command.qbc.GetByGroupImpl()},
         };
     }
 }
