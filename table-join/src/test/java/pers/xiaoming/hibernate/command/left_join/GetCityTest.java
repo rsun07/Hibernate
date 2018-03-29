@@ -1,4 +1,4 @@
-package pers.xiaoming.hibernate.command.left_outer_join;
+package pers.xiaoming.hibernate.command.left_join;
 
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -15,7 +15,7 @@ public class GetCityTest {
         Assert.assertEquals(returnCity, InitDb.getCities().get(cityId));
     }
 
-    @DataProvider(name = "left_outer_join")
+    @DataProvider(name = "left_join")
     public Object[][] daoProvider() {
         return new Object[][] {
                 {new Hql()},

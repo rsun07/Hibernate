@@ -1,13 +1,10 @@
-package pers.xiaoming.hibernate.command.left_outer_join;
+package pers.xiaoming.hibernate.command.left_join;
 
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import pers.xiaoming.hibernate.entity.City;
-import pers.xiaoming.hibernate.entity.Person;
-
-import java.util.List;
 
 public class Qbc implements GetCity {
     @Override

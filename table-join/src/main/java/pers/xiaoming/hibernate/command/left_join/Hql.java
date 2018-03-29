@@ -1,4 +1,4 @@
-package pers.xiaoming.hibernate.command.left_outer_join;
+package pers.xiaoming.hibernate.command.left_join;
 
 import org.hibernate.Session;
 import pers.xiaoming.hibernate.entity.City;
