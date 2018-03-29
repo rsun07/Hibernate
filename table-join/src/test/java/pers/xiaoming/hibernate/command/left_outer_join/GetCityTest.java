@@ -20,6 +20,7 @@ public class GetCityTest {
         return new Object[][] {
                 {new Hql()},
                 {new Sql()},
+                {new Qbc()},
         };
     }
 }
