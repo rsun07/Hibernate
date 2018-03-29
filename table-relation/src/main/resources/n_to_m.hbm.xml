@@ -3,14 +3,13 @@
 <!DOCTYPE hibernate-mapping PUBLIC
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<hibernate-mapping package="pers.xiaoming.hibernate.entity.one_to_many">
+<hibernate-mapping package="pers.xiaoming.hibernate.entity.n_to_m">
     <!--omit table name and attribute names if use same name as Class name and field names-->
-    <class name="City">
+    <class name="Customer">
         <id name = "id">
             <generator class="native"/>
         </id>
         <property name="name"/>
-        <!--set here means the verb set, not the Java Collection Set-->
         <set name="residents" cascade="save-update">
             <!--This column name will be used to define foreigner key in current table-->
             <!--So the name should NOT duplicate with primary key-->
