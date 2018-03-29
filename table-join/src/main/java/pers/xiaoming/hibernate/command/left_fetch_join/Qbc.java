@@ -1,7 +1,6 @@
-package pers.xiaoming.hibernate.command.left_join;
+package pers.xiaoming.hibernate.command.left_fetch_join;
 
 import org.hibernate.Criteria;
-import org.hibernate.FetchMode;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
@@ -18,13 +17,9 @@ public class Qbc implements GetCity {
             int dbIndex = id + 1;
 
             Criteria criteria = session.createCriteria(City.class);
-            // the association Path should be the object's parameter name
-            // the foreigner key relationship is already mapping in the hbm.xml file
-
-            // this also works
-            // criteria.setFetchMode("residents", FetchMode.JOIN);
             criteria.createCriteria("residents", JoinType.LEFT_OUTER_JOIN);
-
+            // same as the 'distinct' in the hql
+            criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
             criteria.add(Restrictions.eq("id", dbIndex));
 
             City city = (City) criteria.uniqueResult();

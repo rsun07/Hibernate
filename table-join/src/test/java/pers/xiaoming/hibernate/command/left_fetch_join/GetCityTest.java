@@ -20,7 +20,7 @@ public class GetCityTest {
     public Object[][] daoProvider() {
         return new Object[][] {
                 {new Hql()},
-//                {new Qbc()},
+                {new Qbc()},
         };
     }
 }
