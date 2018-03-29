@@ -11,7 +11,8 @@
         </id>
         <property name="name"/>
         <!--set here means the verb set, not the Java Collection Set-->
-        <set name="stores" cascade="save-update" table="store">
+        <!--here need to introduce an intermediate table for join-->
+        <set name="stores" cascade="save-update" table="intermediate_join_table">
             <!--Customer id's name in the middle table-->
             <key column="customer_id"/>
             <!--Store id's name in the middle table-->
