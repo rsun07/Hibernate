@@ -10,6 +10,7 @@
             <generator class="native"/>
         </id>
         <property name="name"/>
+        <!--set here means the verb set, not the Java Collection Set-->
         <!--inverse = true means give up relation-->
         <set name="residents" cascade="save-update" inverse="true">
             <key column="city_id"/>

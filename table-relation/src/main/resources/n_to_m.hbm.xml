@@ -10,6 +10,7 @@
             <generator class="native"/>
         </id>
         <property name="name"/>
+        <!--set here means the verb set, not the Java Collection Set-->
         <set name="residents" cascade="save-update">
             <!--This column name will be used to define foreigner key in current table-->
             <!--So the name should NOT duplicate with primary key-->
