@@ -47,7 +47,8 @@ public class City {
 
     private boolean checkSetEquals(Set<Person> set) {
         if (residents == set) return true;
-        if (set == null || residents.getClass() != set.getClass()) return false;
+
+        if (set == null) return false;
         if (residents.size() != set.size()) return false;
 
         // return residents.containsAll(set);

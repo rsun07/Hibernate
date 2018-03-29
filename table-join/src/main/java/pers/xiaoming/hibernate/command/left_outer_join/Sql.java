@@ -7,8 +7,8 @@ import pers.xiaoming.hibernate.entity.Person;
 import java.util.List;
 
 public class Sql implements GetCity {
-    private static final String QUERY = "SELECT c.id, c.name, p.id, p.name FROM city AS c " +
-            "LEFT JOIN person AS p ON c.id = p.city_id p WHERE c.id = :city_id";
+    private static final String QUERY = "SELECT c.id AS cid, c.name AS cname, p.id AS pid, p.name AS pname " +
+            "FROM city AS c LEFT JOIN person AS p ON c.id = p.city_id WHERE c.id = :cityId";
 
     @Override
     @SuppressWarnings("unchecked")
@@ -18,7 +18,7 @@ public class Sql implements GetCity {
 
             int dbIndex = id + 1;
 
-            List<Object[]> queryResult = session.createSQLQuery(QUERY).setInteger("city_id", dbIndex).list();
+            List<Object[]> queryResult = session.createSQLQuery(QUERY).setInteger("cityId", dbIndex).list();
 
             City city = null;
 

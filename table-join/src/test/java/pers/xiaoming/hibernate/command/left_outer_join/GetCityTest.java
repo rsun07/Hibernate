@@ -19,6 +19,7 @@ public class GetCityTest {
     public Object[][] daoProvider() {
         return new Object[][] {
                 {new Hql()},
+                {new Sql()},
         };
     }
 }
