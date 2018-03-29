@@ -11,11 +11,14 @@ import java.util.Set;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class City {
     private Integer id;
     private String name;
     private Set<Person> residents;
+
+    public City() {
+        this.residents = new HashSet<>();
+    }
 
     public City(String name) {
         this.name = name;
@@ -25,6 +28,11 @@ public class City {
     public City(String name, Set<Person> residents) {
         this.name = name;
         this.residents = residents;
+    }
+
+    public City(Integer id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
     @Override
