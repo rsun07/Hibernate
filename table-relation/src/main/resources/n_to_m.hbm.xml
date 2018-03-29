@@ -12,10 +12,10 @@
         <property name="name"/>
         <!--set here means the verb set, not the Java Collection Set-->
         <set name="stores" cascade="save-update" table="store">
-            <!--This column name will be used to define foreigner key in current table-->
-            <!--So the name should NOT duplicate with primary key-->
-            <key column="store_id"/>
-            <many-to-many class="Store"/>
+            <!--Customer id's name in the middle table-->
+            <key column="customer_id"/>
+            <!--Store id's name in the middle table-->
+            <many-to-many class="Store" column="store_id"/>
         </set>
     </class>
 
@@ -24,7 +24,6 @@
             <generator class="native"/>
         </id>
         <property name="name"/>
-        <property name="address"/>
     </class>
 
 </hibernate-mapping>

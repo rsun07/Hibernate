@@ -3,7 +3,7 @@ package pers.xiaoming.hibernate.command.n_to_m;
 import org.hibernate.Session;
 import pers.xiaoming.hibernate.entity.n_to_m.Customer;
 
-public class CreateStoreAndCustomer {
+public class CreateCustomer {
     public void create(Session session, Customer customer) throws Exception {
 
         try {
