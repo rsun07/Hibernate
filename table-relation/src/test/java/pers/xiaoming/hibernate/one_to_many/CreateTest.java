@@ -38,9 +38,10 @@ public class CreateTest {
     private void verifyCreate() {
         GetEntity<Person> getPerson = new GetPerson();
         for (Person person : residents) {
-            Assert.assertEquals(person, getPerson.get(
-                    SessionFactory.getSession(),
-                    person.getId()));
+            Assert.assertEquals(person,
+                    getPerson.get(
+                            SessionFactory.getSession(),
+                            person.getId()));
         }
     }
 }

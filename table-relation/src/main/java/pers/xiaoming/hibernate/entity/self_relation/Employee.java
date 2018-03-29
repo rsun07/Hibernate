@@ -1,8 +1,8 @@
 package pers.xiaoming.hibernate.entity.self_relation;
 
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 import java.util.HashSet;
 import java.util.Objects;
