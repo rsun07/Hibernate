@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="pers.xiaoming.hibernate.entity.n_to_m">
+    <!--omit table name and attribute names if use same name as Class name and field names-->
+    <class name="Customer">
+        <id name = "id">
+            <generator class="native"/>
+        </id>
+        <property name="name"/>
+        <!--set here means the verb set, not the Java Collection Set-->
+        <!--here need to introduce an intermediate table for join-->
+        <set name="stores" cascade="save-update" table="intermediate_join_table">
+            <!--Customer id's name in the middle table-->
+            <key column="customer_id"/>
+            <!--Store id's name in the middle table-->
+            <many-to-many class="Store" column="store_id"/>
+        </set>
+    </class>
+
+    <class name="Store">
+        <id name="id">
+            <generator class="native"/>
+        </id>
+        <property name="name"/>
+    </class>
+
+</hibernate-mapping>

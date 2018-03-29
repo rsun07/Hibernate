@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<!--Not run on maven-->
+<!--Running for test driven development-->
+<!--Once finished, should be merged into integration_testing.xml-->
+<suite name="test driven development test">
+    <test name="Initial Dao">
+        <classes>
+            <class name="pers.xiaoming.hibernate.InitDao"/>
+        </classes>
+    </test>
+
+    <test name="one to many create test">
+        <classes>
+            <class name="pers.xiaoming.hibernate.n_to_m.CreateTest"/>
+        </classes>
+    </test>
+</suite>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!--all properties could be get from hibernate.properties-->
+        <!--hibernate will automatically check the hibernate.properties during initialization-->
+
+        <!--Register entity mapping files-->
+        <mapping resource="one_to_many.hbm.xml"/>
+        <mapping resource="one_to_many_mutual.hbm.xml"/>
+        <mapping resource="self_relation.hbm.xml"/>
+        <mapping resource="n_to_m.hbm.xml"/>
+
+    </session-factory>
+</hibernate-configuration>

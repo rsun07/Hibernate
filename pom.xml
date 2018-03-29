@@ -11,8 +11,9 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>table-relation</module>
     <module>single-table</module>
+    <module>table-relation</module>
+    <module>table-join</module>
   </modules>
 
   <properties>
