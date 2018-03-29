@@ -4,6 +4,7 @@ import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
+import pers.xiaoming.hibernate.command.GetCity;
 import pers.xiaoming.hibernate.entity.City;
 
 public class Qbc implements GetCity {

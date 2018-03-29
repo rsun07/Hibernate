@@ -1,6 +1,7 @@
 package pers.xiaoming.hibernate.command.left_join;
 
 import org.hibernate.Session;
+import pers.xiaoming.hibernate.command.GetCity;
 import pers.xiaoming.hibernate.entity.City;
 import pers.xiaoming.hibernate.entity.Person;
 
