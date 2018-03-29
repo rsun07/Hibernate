@@ -26,4 +26,6 @@
         <property name="name"/>
     </class>
 
+    <query name="selectCity">select distinct c from City c left outer join fetch c.residents where c.id = :city_id</query>
+
 </hibernate-mapping>

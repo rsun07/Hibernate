@@ -21,6 +21,7 @@ public class GetCityTest {
         return new Object[][] {
                 {new Hql()},
                 {new Qbc()},
+                {new HqlNamedQuery()}
         };
     }
 }
