@@ -11,9 +11,9 @@
         </classes>
     </test>
 
-    <!--<test name="one to many create test">-->
-        <!--<classes>-->
-            <!--<class name="pers.xiaoming.hibernate.n_to_m.CreateTest"/>-->
-        <!--</classes>-->
-    <!--</test>-->
+    <test name="one to many create test">
+        <classes>
+            <class name="pers.xiaoming.hibernate.command.left_outer_join.GetCityTest"/>
+        </classes>
+    </test>
 </suite>

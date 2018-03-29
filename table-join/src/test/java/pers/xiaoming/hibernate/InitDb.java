@@ -13,7 +13,11 @@ public class InitDb {
     private static final int TOTAL_CITY = 3;
     private static final List<Integer> NO_PERSON_IN_CITIES = Arrays.asList(2, 1, 5);
 
-    private List<City> cities = new ArrayList<>(TOTAL_CITY);
+    private static List<City> cities = new ArrayList<>(TOTAL_CITY);
+
+    public static List<City> getCities() {
+        return cities;
+    }
 
     @BeforeSuite
     public static void initDao() {
@@ -30,6 +34,7 @@ public class InitDb {
                 city.getResidents().add(person);
             }
             createCity.create(SessionFactory.getSession(), city);
+            cities.add(city);
         }
     }
 }
