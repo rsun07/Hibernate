@@ -28,9 +28,6 @@ public class GetByGroupImpl implements GetByGroup {
 
             session.getTransaction().commit();
 
-            System.out.println(session.getClass());
-            System.out.println(session.getTransaction().getClass());
-
             return list;
 
         } catch (Exception e) {

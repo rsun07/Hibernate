@@ -7,12 +7,13 @@ import pers.xiaoming.hibernate.SessionFactory;
 import pers.xiaoming.hibernate.command.GetEntity;
 import pers.xiaoming.hibernate.command.self_relation.CreateEmployee;
 import pers.xiaoming.hibernate.command.self_relation.GetEmployee;
+import pers.xiaoming.hibernate.entity.self_relation.DBEmployee;
 import pers.xiaoming.hibernate.entity.self_relation.Employee;
 
 public class CreateTest {
     private Employee manager;
 
-    @BeforeTest(enabled = false)
+    @BeforeTest
     public void setup() {
         manager = new Employee("John", "CEO");
         manager.getSubordinators().add(new Employee("Marry", "HR"));
@@ -20,7 +21,7 @@ public class CreateTest {
     }
 
     // fix after
-    @Test(enabled = false)
+    @Test
     public void testCreate() throws Exception {
         CreateEmployee createEmployee = new CreateEmployee();
         createEmployee.create(SessionFactory.getSession(), manager);
@@ -31,7 +32,12 @@ public class CreateTest {
         GetEmployee getEmployee = new GetEmployee();
 
         for (Employee employee : manager.getSubordinators()) {
-//             Assert.assertEquals(getEmployee.getManager(SessionFactory.getSession(), employee.getId()), manager);
+
+            DBEmployee managerReturn = getEmployee.getManager(SessionFactory.getSession(), employee.getId());
+
+            Assert.assertNull(managerReturn.getManager_id());
+            Assert.assertEquals(managerReturn.getName(), manager.getName());
+            Assert.assertEquals(managerReturn.getTitle(), manager.getTitle());
         }
     }
 }
