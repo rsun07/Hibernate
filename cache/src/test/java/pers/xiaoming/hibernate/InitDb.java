@@ -1,5 +1,6 @@
 package pers.xiaoming.hibernate;
 
+import lombok.Getter;
 import org.hibernate.Session;
 import org.testng.annotations.BeforeSuite;
 import pers.xiaoming.hibernate.command.CreateStudent;
@@ -53,5 +54,9 @@ public class InitDb {
             int id = dbOperator.create(session, student);
             ids.add(id);
         }
+    }
+
+    public static Student getStudent(int id) {
+        return students.get(id);
     }
 }

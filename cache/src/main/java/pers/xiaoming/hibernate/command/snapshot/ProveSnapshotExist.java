@@ -4,12 +4,12 @@ import org.hibernate.Session;
 import pers.xiaoming.hibernate.entity.Student;
 
 public class ProveSnapshotExist {
-    public void run(Session session, String originName, String updatedName) {
+    public void run(Session session, int id, String originName, String updatedName) {
         try {
             session.beginTransaction();
 
             // Student 1 should have name as "John0" from the data initializer
-            Student student = session.get(Student.class, 1);
+            Student student = session.get(Student.class, id);
 
             assert student.getName().equals(originName);
 
