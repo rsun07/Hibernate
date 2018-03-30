@@ -116,9 +116,41 @@ public class GetTest {
     list() first, load everything into cache, then use iterator to do whatever detail query from the cache
 
 
+        Hibernate:
+            select
+                student0_.id as id1_0_,
+                student0_.name as name2_0_,
+                student0_.age as age3_0_,
+                student0_.score as score4_0_
+            from
+                Student student0_
+        Student(id=1, name=John0, age=20, score=85.0)
+        Student(id=2, name=John1, age=21, score=83.0)
+
+        ------Separator for two queries--------
+
+        Hibernate:
+            select
+                student0_.id as col_0_0_
+            from
+                Student student0_
+        Student(id=1, name=John0, age=20, score=85.0)
+        Student(id=2, name=John1, age=21, score=83.0)
+
+        ------Separator for two queries--------
+
+        Hibernate:
+            select
+                student0_.id as col_0_0_
+            from
+                Student student0_
+        Student(id=1, name=John0, age=20, score=91.0)
+        Student(id=2, name=John1, age=21, score=82.0)
      */
     @Test
     public void testGetByListThenIterate() {
+        GetByListThenIterate dbOperator = new GetByListThenIterate();
 
+        dbOperator.getAll(SessionManager.getSession());
     }
 }
