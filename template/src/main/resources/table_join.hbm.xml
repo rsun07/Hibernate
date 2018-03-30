@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="pers.xiaoming.hibernate.entity">
+    <!--omit table name and attribute names if use same name as Class name and field names-->
+    <class name="City">
+        <id name = "id">
+            <generator class="native"/>
+        </id>
+        <property name="name"/>
+        <set name="residents" cascade="all">
+            <!--This column name will be used to define foreigner key in current table-->
+            <!--So the name should NOT duplicate with primary key-->
+            <key column="city_id"/>
+            <one-to-many class="Person"/>
+        </set>
+    </class>
+
+    <class name="Person">
+        <id name="id">
+            <generator class="native"/>
+        </id>
+        <property name="name"/>
+    </class>
+
+    <query name="selectCity">select distinct c from City c left outer join fetch c.residents where c.id = :city_id</query>
+
+</hibernate-mapping>
