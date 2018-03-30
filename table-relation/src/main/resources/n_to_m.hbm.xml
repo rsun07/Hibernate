@@ -10,7 +10,6 @@
             <generator class="native"/>
         </id>
         <property name="name"/>
-        <!--set here means the verb set, not the Java Collection Set-->
         <!--here need to introduce an intermediate table for join-->
         <set name="stores" cascade="save-update" table="intermediate_join_table">
             <!--Customer id's name in the middle table-->

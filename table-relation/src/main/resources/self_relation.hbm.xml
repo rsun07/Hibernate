@@ -11,7 +11,6 @@
         </id>
         <property name="name"/>
         <property name="title"/>
-        <!--set here means the verb set, not the Java Collection Set-->
         <set name="subordinators" cascade="save-update">
             <!--This column name will be used to define foreigner key -->
             <!--So the name should NOT duplicate with primary key-->
