@@ -21,7 +21,7 @@ public class InitDb {
 
     @BeforeSuite
     public static void initDao() {
-        SessionFactory.getSession();
+        SessionManager.getSession();
     }
 
     @BeforeSuite
@@ -33,7 +33,7 @@ public class InitDb {
                 Person person = new Person("City" + i + "_Person" + j);
                 city.getResidents().add(person);
             }
-            createCity.create(SessionFactory.getSession(), city);
+            createCity.create(SessionManager.getSession(), city);
             cities.add(city);
         }
     }

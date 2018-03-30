@@ -5,7 +5,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pers.xiaoming.hibernate.command.get_interface.GetProjection;
 import pers.xiaoming.hibernate.entity.Student;
-import pers.xiaoming.hibernate.session_factory.SessionFactory;
+import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class GetProjectionTest {
 
         int ageMin = 21;
 
-        List<Student> students = getProjection.get(SessionFactory.getSession(), ageMin);
+        List<Student> students = getProjection.get(SessionManager.getSession(), ageMin);
 
         for (Student student : students) {
             Assert.assertNotNull(student.getAge());

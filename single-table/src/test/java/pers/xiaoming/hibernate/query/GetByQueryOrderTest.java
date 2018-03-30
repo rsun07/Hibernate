@@ -5,7 +5,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pers.xiaoming.hibernate.command.get_interface.GetByOrder;
 import pers.xiaoming.hibernate.entity.Student;
-import pers.xiaoming.hibernate.session_factory.SessionFactory;
+import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class GetByQueryOrderTest {
         int maxResult = 6;
 
         // by default, return desc result
-        List<Student> students = getByOrder.get(SessionFactory.getSession(), orderByField, GetByOrder.QueryOrder.DESC, maxResult);
+        List<Student> students = getByOrder.get(SessionManager.getSession(), orderByField, GetByOrder.QueryOrder.DESC, maxResult);
 
         Assert.assertEquals(students.size(), maxResult);
         System.out.println(students);
@@ -38,7 +38,7 @@ public class GetByQueryOrderTest {
         int maxResult = 6;
 
         // by default, return desc result
-        List<Student> students = getByOrder.get(SessionFactory.getSession(), orderByField, GetByOrder.QueryOrder.ASC, maxResult);
+        List<Student> students = getByOrder.get(SessionManager.getSession(), orderByField, GetByOrder.QueryOrder.ASC, maxResult);
 
         Assert.assertEquals(students.size(), maxResult);
         System.out.println(students);
@@ -65,7 +65,7 @@ public class GetByQueryOrderTest {
         int maxResult = 6;
 
         // by default, return desc result
-        List<Student> students = getByOrder.get(SessionFactory.getSession(), orderByField, GetByOrder.QueryOrder.DESC, maxResult);
+        List<Student> students = getByOrder.get(SessionManager.getSession(), orderByField, GetByOrder.QueryOrder.DESC, maxResult);
 
         Assert.assertEquals(students.size(), maxResult);
         System.out.println(students);

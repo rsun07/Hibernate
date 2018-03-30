@@ -2,7 +2,7 @@ package pers.xiaoming.hibernate.n_to_m;
 
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pers.xiaoming.hibernate.SessionFactory;
+import pers.xiaoming.hibernate.SessionManager;
 import pers.xiaoming.hibernate.command.n_to_m.CreateCustomer;
 import pers.xiaoming.hibernate.entity.n_to_m.Customer;
 import pers.xiaoming.hibernate.entity.n_to_m.Store;
@@ -31,7 +31,7 @@ public class CreateTest {
     @Test
     public void testCreate() throws Exception {
         CreateCustomer createCustomer = new CreateCustomer();
-        createCustomer.create(SessionFactory.getSession(), customer1);
-        createCustomer.create(SessionFactory.getSession(), customer2);
+        createCustomer.create(SessionManager.getSession(), customer1);
+        createCustomer.create(SessionManager.getSession(), customer2);
     }
 }

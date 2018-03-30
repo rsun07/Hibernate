@@ -6,7 +6,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import pers.xiaoming.hibernate.command.basic.CURDStudentBasic;
 import pers.xiaoming.hibernate.entity.Student;
-import pers.xiaoming.hibernate.session_factory.SessionFactory;
+import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +56,7 @@ public class DataProcessor {
                     .build();
             students.add(student);
 
-            Session session = SessionFactory.getSession();
+            Session session = SessionManager.getSession();
             int id = dbOperator.create(session, student);
             ids.add(id);
         }
@@ -69,7 +69,7 @@ public class DataProcessor {
         for(int id : ids) {
             CURDStudentBasic dbOperator = new CURDStudentBasic();
 
-            Session session = SessionFactory.getSession();
+            Session session = SessionManager.getSession();
             dbOperator.delete(session, id);
         }
     }

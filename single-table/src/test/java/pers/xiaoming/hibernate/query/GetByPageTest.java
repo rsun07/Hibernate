@@ -5,7 +5,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pers.xiaoming.hibernate.command.get_interface.GetByPage;
 import pers.xiaoming.hibernate.entity.Student;
-import pers.xiaoming.hibernate.session_factory.SessionFactory;
+import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class GetByPageTest {
         int pageSize = 2;
         int startIndex = 6;
 
-        List<Student> students = getByPage.get(SessionFactory.getSession(), startIndex, pageSize);
+        List<Student> students = getByPage.get(SessionManager.getSession(), startIndex, pageSize);
         Assert.assertEquals(pageSize, students.size());
     }
 

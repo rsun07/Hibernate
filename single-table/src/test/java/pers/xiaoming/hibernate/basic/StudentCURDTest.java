@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pers.xiaoming.hibernate.command.basic.CURDStudentBasic;
 import pers.xiaoming.hibernate.entity.Student;
-import pers.xiaoming.hibernate.session_factory.SessionFactory;
+import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 public class StudentCURDTest {
     private static CURDStudentBasic dbOperator;
@@ -21,7 +21,7 @@ public class StudentCURDTest {
 
     @Test
     public void testCreate() throws Exception {
-        id = dbOperator.create(SessionFactory.getSession(), student);
+        id = dbOperator.create(SessionManager.getSession(), student);
         testGet();
     }
 
@@ -29,27 +29,27 @@ public class StudentCURDTest {
     public void testUpdate() throws Exception {
         student.setAge(22);
         student.setScore(90.5);
-        dbOperator.update(SessionFactory.getSession(), student);
+        dbOperator.update(SessionManager.getSession(), student);
         testGet();
     }
 
     @Test(dependsOnMethods = "testUpdate")
     public void testDelete() throws Exception {
-        dbOperator.delete(SessionFactory.getSession(), id);
+        dbOperator.delete(SessionManager.getSession(), id);
         student = null;
         testGet();
     }
 
 
     private void testGet() throws Exception {
-        Student studentGetFromDb = dbOperator.get(SessionFactory.getSession(), id);
+        Student studentGetFromDb = dbOperator.get(SessionManager.getSession(), id);
         Assert.assertEquals(student, studentGetFromDb);
     }
 
     @AfterTest
     public void cleanup() throws Exception {
         try {
-            dbOperator.delete(SessionFactory.getSession(), id);
+            dbOperator.delete(SessionManager.getSession(), id);
         } catch (Exception e) {
             // ignore
         }

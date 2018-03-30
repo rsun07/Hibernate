@@ -3,8 +3,7 @@ package pers.xiaoming.hibernate.self_relation;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pers.xiaoming.hibernate.SessionFactory;
-import pers.xiaoming.hibernate.command.GetEntity;
+import pers.xiaoming.hibernate.SessionManager;
 import pers.xiaoming.hibernate.command.self_relation.CreateEmployee;
 import pers.xiaoming.hibernate.command.self_relation.GetEmployee;
 import pers.xiaoming.hibernate.entity.self_relation.DBEmployee;
@@ -24,7 +23,7 @@ public class CreateTest {
     @Test
     public void testCreate() throws Exception {
         CreateEmployee createEmployee = new CreateEmployee();
-        createEmployee.create(SessionFactory.getSession(), manager);
+        createEmployee.create(SessionManager.getSession(), manager);
         verifyCreate();
     }
 
@@ -33,7 +32,7 @@ public class CreateTest {
 
         for (Employee employee : manager.getSubordinators()) {
 
-            DBEmployee managerReturn = getEmployee.getManager(SessionFactory.getSession(), employee.getId());
+            DBEmployee managerReturn = getEmployee.getManager(SessionManager.getSession(), employee.getId());
 
             Assert.assertNull(managerReturn.getManager_id());
             Assert.assertEquals(managerReturn.getName(), manager.getName());

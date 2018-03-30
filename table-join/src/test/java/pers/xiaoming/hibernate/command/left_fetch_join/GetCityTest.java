@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pers.xiaoming.hibernate.InitDb;
-import pers.xiaoming.hibernate.SessionFactory;
+import pers.xiaoming.hibernate.SessionManager;
 import pers.xiaoming.hibernate.command.GetCity;
 import pers.xiaoming.hibernate.entity.City;
 
@@ -12,7 +12,7 @@ public class GetCityTest {
     @Test(dataProvider = "left_fetch_join")
     public void testGetCity(GetCity getCity) throws Exception {
         int cityId = 2;
-        City returnCity = getCity.get(SessionFactory.getSession(), cityId);
+        City returnCity = getCity.get(SessionManager.getSession(), cityId);
         Assert.assertEquals(returnCity, InitDb.getCities().get(cityId));
     }
 

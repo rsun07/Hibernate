@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pers.xiaoming.hibernate.command.get_interface.GetByGroup;
-import pers.xiaoming.hibernate.session_factory.SessionFactory;
+import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ public class GetByGroupTest {
         // only age 20 will appear more than 3 times
         int appearance = 3;
 
-        List<Object> ages = getByGroup.get(SessionFactory.getSession(), appearance);
+        List<Object> ages = getByGroup.get(SessionManager.getSession(), appearance);
 
         Assert.assertEquals(ages.size(), 1);
         for (Object age : ages) {
