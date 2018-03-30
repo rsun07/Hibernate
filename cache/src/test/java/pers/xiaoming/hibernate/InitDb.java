@@ -12,7 +12,7 @@ import java.util.Random;
 
 public class InitDb {
 
-    private static final int NUM_OF_DATA_GENERATE = 10;
+    private static final int NUM_OF_DATA_GENERATE = 2;
 
     private static final String NAME_PREFIX = "John";
 

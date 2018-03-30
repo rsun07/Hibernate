@@ -10,16 +10,25 @@ public class GetByIterate{
 
     private static final String QUERY = "FROM Student";
 
-    public Iterator<Student> getAll(Session session) {
+    public void getAll(Session session) {
         try {
             session.beginTransaction();
 
             @SuppressWarnings("unchecked")
-            Iterator<Student> studentsItr = session.createQuery(QUERY).iterate();
+            Iterator<Student> students1 = session.createQuery(QUERY).iterate();
+            while (students1.hasNext()) {
+                System.out.println(students1.next());
+            }
+
+            System.out.println("\n------Separator for two queries--------\n");
+            @SuppressWarnings("unchecked")
+            Iterator<Student> students2 = session.createQuery(QUERY).iterate();
+            while (students2.hasNext()) {
+                System.out.println(students2.next());
+            }
 
             session.getTransaction().commit();
 
-            return studentsItr;
         } catch (Exception e) {
             session.getTransaction().rollback();
             throw e;

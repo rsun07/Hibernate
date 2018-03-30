@@ -10,4 +10,10 @@
             <class name="pers.xiaoming.hibernate.InitDb"/>
         </classes>
     </test>
+
+    <test name="Get By list vs get by iterate">
+        <classes>
+            <class name="pers.xiaoming.hibernate.command.list_vs_iterate.GetTest"/>
+        </classes>
+    </test>
 </suite>
