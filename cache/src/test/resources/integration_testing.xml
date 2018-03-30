@@ -3,7 +3,7 @@
 <suite name="hibernate_test">
     <test name="Initial Dao">
         <classes>
-            <class name="pers.xiaoming.hibernate.InitDao"/>
+            <class name="pers.xiaoming.hibernate.InitDb"/>
         </classes>
     </test>
 </suite>
