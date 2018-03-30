@@ -51,11 +51,14 @@ public class City {
         if (set == null) return false;
         if (residents.size() != set.size()) return false;
 
+        // Doesn't work
         // return residents.containsAll(set);
 
         // Here the Set will be converted to "org.hibernate.collection.internal.PersistentSet"
         // the PersistentSet's contains() and containsAll() function returns false
         // for two equal sets (at least equals by the following comparison)
+
+        // A potential cause is, the Persistent set is a proxy
 
         /*
         for (Person personToCheck : set) {

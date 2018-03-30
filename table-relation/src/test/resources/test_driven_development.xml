@@ -13,7 +13,7 @@
 
     <test name="one to many create test">
         <classes>
-            <class name="pers.xiaoming.hibernate.n_to_m.CreateTest"/>
+            <class name="pers.xiaoming.hibernate.self_relation.CreateTest"/>
         </classes>
     </test>
 </suite>

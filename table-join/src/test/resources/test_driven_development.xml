@@ -13,7 +13,7 @@
 
     <test name="one to many create test">
         <classes>
-            <class name="pers.xiaoming.hibernate.command.left_fetch_join.GetCityTest"/>
+            <class name="pers.xiaoming.hibernate.command.left_join.GetCityTest"/>
         </classes>
     </test>
 </suite>
