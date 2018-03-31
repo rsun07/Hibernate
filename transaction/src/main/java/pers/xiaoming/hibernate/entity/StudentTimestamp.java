@@ -9,10 +9,16 @@ import lombok.ToString;
 import java.sql.Timestamp;
 
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
 public class StudentTimestamp extends Student {
     private Timestamp timestamp;
+
+    public StudentTimestamp(Student student) {
+        this.setId(student.getId());
+        this.setAge(student.getAge());
+        this.setName(student.getName());
+        this.setScore(student.getScore());
+    }
 }

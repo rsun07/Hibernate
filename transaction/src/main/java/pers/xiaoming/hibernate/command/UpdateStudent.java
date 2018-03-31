@@ -3,17 +3,13 @@ package pers.xiaoming.hibernate.command;
 import org.hibernate.Session;
 import pers.xiaoming.hibernate.entity.Student;
 
-public class GetStudent {
-    public Student get(Session session, int id, Class<Student> studentClass) {
+public class UpdateStudent {
+    public boolean update(Session session, Student student) {
         try {
             session.beginTransaction();
-
-            Student student = session.get(studentClass, id);
-
+            session.update(student);
             session.getTransaction().commit();
-
-            return student;
-
+            return true;
         } catch (Exception e) {
             session.getTransaction().rollback();
             throw e;

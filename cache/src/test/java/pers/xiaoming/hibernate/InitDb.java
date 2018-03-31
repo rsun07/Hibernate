@@ -21,13 +21,10 @@ public class InitDb {
 
     private static final double SCORE_START = 80;
 
-    private static List<Integer> ids;
-
     private static List<Student> students;
 
     @BeforeSuite
     public static void initData() {
-        ids = new ArrayList<>();
         students = new ArrayList<>();
 
         CreateStudent dbOperator = new CreateStudent();
@@ -44,15 +41,14 @@ public class InitDb {
 
         for (int i = 0; i < NUM_OF_DATA_GENERATE; i++) {
             Student student = Student.builder()
-                    .name("John" + i)
-                    .age(20 + i%3)
-                    .score(80.0 + random.nextInt(20))
+                    .name(NAME_PREFIX + i)
+                    .age(AGE_START + i%3)
+                    .score(SCORE_START + random.nextInt((int)(100 - SCORE_START)))
                     .build();
             students.add(student);
 
             Session session = SessionManager.getSession();
-            int id = dbOperator.create(session, student);
-            ids.add(id);
+            dbOperator.create(session, student);
         }
     }
 

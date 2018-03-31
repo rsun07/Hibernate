@@ -5,6 +5,8 @@ import org.hibernate.Session;
 import org.testng.annotations.BeforeSuite;
 import pers.xiaoming.hibernate.command.CreateStudent;
 import pers.xiaoming.hibernate.entity.Student;
+import pers.xiaoming.hibernate.entity.StudentTimestamp;
+import pers.xiaoming.hibernate.entity.StudentVersion;
 import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 import java.util.ArrayList;
@@ -21,13 +23,10 @@ public class InitDb {
 
     private static final double SCORE_START = 80;
 
-    private static List<Integer> ids;
-
     private static List<Student> students;
 
     @BeforeSuite
     public static void initData() {
-        ids = new ArrayList<>();
         students = new ArrayList<>();
 
         CreateStudent dbOperator = new CreateStudent();
@@ -44,15 +43,17 @@ public class InitDb {
 
         for (int i = 0; i < NUM_OF_DATA_GENERATE; i++) {
             Student student = Student.builder()
-                    .name("John" + i)
-                    .age(20 + i%3)
-                    .score(80.0 + random.nextInt(20))
+                    .name(NAME_PREFIX + i)
+                    .age(AGE_START + i%3)
+                    .score(SCORE_START + random.nextInt((int)(100 - SCORE_START)))
                     .build();
             students.add(student);
 
-            Session session = SessionManager.getSession();
-            int id = dbOperator.create(session, student);
-            ids.add(id);
+            Student studentVersion = new StudentVersion(student);
+            Student studentTimestamp = new StudentTimestamp(student);
+
+            dbOperator.create(SessionManager.getSession(), studentVersion);
+            dbOperator.create(SessionManager.getSession(), studentTimestamp);
         }
     }
 
