@@ -9,7 +9,8 @@
         <!--hibernate will automatically check the hibernate.properties during initialization-->
 
         <!--Register entity mapping files-->
-        <mapping resource="Student.hbm.xml"/>
+        <mapping resource="student_version.hbm.xml"/>
+        <mapping resource="student_timestamp.hbm.xml"/>
 
     </session-factory>
 </hibernate-configuration>

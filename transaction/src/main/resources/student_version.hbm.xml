@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="pers.xiaoming.hibernate.entity">
+    <!--The functionality of mapping class
+        1. Class to Table mapping
+        2. Fields to Attributes mapping
+    -->
+    <class name="StudentVersion">
+        <id name = "id">
+            <generator class="native"/>
+        </id>
+        <version name="version"/>
+        <property name="name"/>
+        <property name="age"/>
+        <property name="score"/>
+    </class>
+</hibernate-mapping>

@@ -12,5 +12,5 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class StudentVersion extends Student {
-    private Integer version;
+    private int version;
 }

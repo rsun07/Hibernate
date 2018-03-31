@@ -8,10 +8,11 @@
         1. Class to Table mapping
         2. Fields to Attributes mapping
     -->
-    <class name="Student">
+    <class name="StudentTimestamp">
         <id name = "id">
             <generator class="native"/>
         </id>
+        <timestamp name="timestamp"/>
         <property name="name"/>
         <property name="age"/>
         <property name="score"/>
