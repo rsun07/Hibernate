@@ -6,4 +6,10 @@
             <class name="pers.xiaoming.hibernate.InitDb"/>
         </classes>
     </test>
+
+    <test name="lock test">
+        <classes>
+            <class name="pers.xiaoming.hibernate.command.optimisticlock.UpdateTest"/>
+        </classes>
+    </test>
 </suite>

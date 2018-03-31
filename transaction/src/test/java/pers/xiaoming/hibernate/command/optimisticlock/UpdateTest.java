@@ -1,4 +1,4 @@
-package pers.xiaoming.hibernate.command.optimistic;
+package pers.xiaoming.hibernate.command.optimisticlock;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

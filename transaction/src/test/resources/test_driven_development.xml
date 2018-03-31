@@ -13,7 +13,7 @@
 
     <test name="Version lock test">
         <classes>
-            <class name="pers.xiaoming.hibernate.command.optimistic.UpdateTest"/>
+            <class name="pers.xiaoming.hibernate.command.optimisticlock.UpdateTest"/>
         </classes>
     </test>
 </suite>
