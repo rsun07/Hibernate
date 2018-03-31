@@ -57,7 +57,7 @@ public class InitDb {
         }
     }
 
-    public static Student getStudent(int id) {
-        return students.get(id);
+    public static List<Student> getStudents() {
+        return students;
     }
 }

@@ -13,12 +13,18 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @ToString
 public class StudentTimestamp extends Student {
+    // if inherit fields from super class
+    // the db mapping cannot find fields
+    private Integer id;
+    private String name;
+    private Integer age;
+    private Double score;
     private Timestamp timestamp;
 
     public StudentTimestamp(Student student) {
-        this.setId(student.getId());
-        this.setAge(student.getAge());
-        this.setName(student.getName());
-        this.setScore(student.getScore());
+        this.id = student.getId();
+        this.age = student.getAge();
+        this.name = student.getName();
+        this.score = student.getScore();
     }
 }

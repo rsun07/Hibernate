@@ -10,4 +10,10 @@
             <class name="pers.xiaoming.hibernate.InitDb"/>
         </classes>
     </test>
+
+    <test name="Version lock test">
+        <classes>
+            <class name="pers.xiaoming.hibernate.command.optimistic.VersionTest"/>
+        </classes>
+    </test>
 </suite>

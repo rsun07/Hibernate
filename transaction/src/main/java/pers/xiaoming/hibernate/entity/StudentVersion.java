@@ -11,12 +11,16 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class StudentVersion extends Student {
+    private Integer id;
+    private String name;
+    private Integer age;
+    private Double score;
     private int version;
 
     public StudentVersion(Student student) {
-        this.setId(student.getId());
-        this.setAge(student.getAge());
-        this.setName(student.getName());
-        this.setScore(student.getScore());
+        this.id = student.getId();
+        this.age = student.getAge();
+        this.name = student.getName();
+        this.score = student.getScore();
     }
 }
