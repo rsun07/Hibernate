@@ -15,6 +15,7 @@
     <module>table-relation</module>
     <module>table-join</module>
     <module>cache</module>
+    <module>transaction</module>
   </modules>
 
   <properties>
