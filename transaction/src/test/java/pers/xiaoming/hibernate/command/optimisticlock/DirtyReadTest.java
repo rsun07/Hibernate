@@ -67,7 +67,7 @@ public class DirtyReadTest {
 
             session.update(student);
 
-            logger.info("update thread update student to {} and sleep", session.get(StudentVersion.class, TEST_ID));
+            logger.info("update thread updated student to {} and sleep", session.get(StudentVersion.class, TEST_ID));
 
             session.getTransaction().commit();
         } catch (Exception e) {
