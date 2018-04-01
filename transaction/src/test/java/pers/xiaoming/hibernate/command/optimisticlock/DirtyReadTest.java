@@ -17,10 +17,12 @@ public class DirtyReadTest {
         Thread readThread = new Thread(this::readTransaction);
         readThread.setName("ReadThread");
         readThread.start();
+//
+//        Thread updateThread = new Thread(this::updateTransaction);
+//        updateThread.setName("UpdateThread");
+//        updateThread.start();
 
-        Thread updateThread = new Thread(this::updateTransaction);
-        updateThread.setName("UpdateThread");
-        updateThread.start();
+//        readTransaction();
     }
 
     private void readTransaction() {
@@ -28,19 +30,24 @@ public class DirtyReadTest {
 
         Session session = SessionManager.getSession();
 
-        session.beginTransaction();
+        try {
+            session.beginTransaction();
 
-        StudentVersion before = session.get(StudentVersion.class, TEST_ID);
+            StudentVersion before = session.get(StudentVersion.class, TEST_ID);
 
-        logger.info("read thread get for the first time and sleep");
+            logger.info("read thread get for the first time and sleep");
 
-        sleep(200);
+            sleep(200);
 
-        StudentVersion after = session.get(StudentVersion.class, TEST_ID);
+            StudentVersion after = session.get(StudentVersion.class, TEST_ID);
 
-        logger.info("read thread get for the second time and compare");
+            logger.info("read thread get for the second time and compare");
 
-        Assert.assertEquals(after, before);
+            Assert.assertEquals(after, before);
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+            throw e;
+        }
     }
 
     private void updateTransaction() {
@@ -50,19 +57,22 @@ public class DirtyReadTest {
 
         Session session = SessionManager.getSession();
 
-        session.beginTransaction();
+        try {
+            session.beginTransaction();
 
-        StudentVersion student = session.get(StudentVersion.class, TEST_ID);
+            StudentVersion student = session.get(StudentVersion.class, TEST_ID);
 
-        student.setName("Mike");
+            student.setName("Mike");
 
-        session.update(student);
+            session.update(student);
 
-        logger.info("update thread update and sleep");
+            logger.info("update thread update and sleep");
 
-        sleep(200);
-
-        session.getTransaction().rollback();
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+            throw e;
+        }
     }
 
     private void sleep(int milliSecs) {
