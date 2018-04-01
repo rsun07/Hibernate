@@ -50,8 +50,12 @@ public class InitDb {
             Student studentVersion = new StudentVersion(student);
             Student studentTimestamp = new StudentTimestamp(student);
 
+            // for optimistic lock
             dbOperator.create(SessionManager.getSession(), studentVersion);
             dbOperator.create(SessionManager.getSession(), studentTimestamp);
+
+            // for pessimistic lock
+            dbOperator.create(SessionManager.getSession(), student);
         }
     }
 

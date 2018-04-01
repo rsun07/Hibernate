@@ -12,5 +12,7 @@
         <mapping resource="student_version.hbm.xml"/>
         <mapping resource="student_timestamp.hbm.xml"/>
 
+        <mapping resource="student.hbm.xml"/>
+
     </session-factory>
 </hibernate-configuration>
