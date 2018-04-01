@@ -7,12 +7,12 @@
 <suite name="test driven development test">
     <test name="Initial Dao">
         <classes>
-            <class name="pers.xiaoming.hibernate.InitDb"/>
         </classes>
     </test>
 
     <test name="Version lock test">
         <classes>
+            <class name="pers.xiaoming.hibernate.InitDb"/>
             <class name="pers.xiaoming.hibernate.command.optimisticlock.DirtyReadTest"/>
         </classes>
     </test>

@@ -4,7 +4,9 @@ import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
+import org.testng.TestNG;
 import org.testng.annotations.Test;
+import pers.xiaoming.hibernate.InitDb;
 import pers.xiaoming.hibernate.entity.StudentVersion;
 import pers.xiaoming.hibernate.session_factory.SessionManager;
 
@@ -33,13 +35,13 @@ public class DirtyReadTest {
 
             StudentVersion before = session.get(StudentVersion.class, TEST_ID);
 
-            logger.info("read thread get for the first time and sleep");
+            logger.info("read thread get student = {} for the first time and sleep", before);
 
             sleep(200);
 
             StudentVersion after = session.get(StudentVersion.class, TEST_ID);
 
-            logger.info("read thread get for the second time and compare");
+            logger.info("read thread get student = {} for the second time", after);
 
             Assert.assertEquals(after, before);
         } catch (Exception e) {
@@ -65,7 +67,7 @@ public class DirtyReadTest {
 
             session.update(student);
 
-            logger.info("update thread update and sleep");
+            logger.info("update thread update student to {} and sleep", session.get(StudentVersion.class, TEST_ID));
 
             session.getTransaction().commit();
         } catch (Exception e) {
@@ -82,4 +84,11 @@ public class DirtyReadTest {
             e.printStackTrace();
         }
     }
+
+    public static void main(String[] args) {
+        TestNG testNG = new TestNG();
+        testNG.setTestClasses(new Class[] {InitDb.class, DirtyReadTest.class});
+        testNG.run();
+    }
+
 }
