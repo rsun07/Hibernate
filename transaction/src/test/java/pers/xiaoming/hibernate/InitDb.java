@@ -1,7 +1,5 @@
 package pers.xiaoming.hibernate;
 
-import lombok.Getter;
-import org.hibernate.Session;
 import org.testng.annotations.BeforeSuite;
 import pers.xiaoming.hibernate.command.CreateStudent;
 import pers.xiaoming.hibernate.entity.Student;

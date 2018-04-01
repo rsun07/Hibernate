@@ -17,12 +17,10 @@ public class DirtyReadTest {
         Thread readThread = new Thread(this::readTransaction);
         readThread.setName("ReadThread");
         readThread.start();
-//
-//        Thread updateThread = new Thread(this::updateTransaction);
-//        updateThread.setName("UpdateThread");
-//        updateThread.start();
 
-//        readTransaction();
+        Thread updateThread = new Thread(this::updateTransaction);
+        updateThread.setName("UpdateThread");
+        updateThread.start();
     }
 
     private void readTransaction() {
@@ -48,6 +46,7 @@ public class DirtyReadTest {
             session.getTransaction().rollback();
             throw e;
         }
+        logger.info("read thread completed!");
     }
 
     private void updateTransaction() {
@@ -73,6 +72,7 @@ public class DirtyReadTest {
             session.getTransaction().rollback();
             throw e;
         }
+        logger.info("update thread completed!");
     }
 
     private void sleep(int milliSecs) {
