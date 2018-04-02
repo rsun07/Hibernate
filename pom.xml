@@ -16,6 +16,7 @@
     <module>table-join</module>
     <module>cache</module>
     <module>transaction</module>
+    <module>annotation</module>
   </modules>
 
   <properties>
