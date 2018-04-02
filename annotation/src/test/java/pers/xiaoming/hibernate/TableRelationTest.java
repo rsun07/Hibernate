@@ -4,11 +4,9 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pers.xiaoming.hibernate.command.CreateCity;
-import pers.xiaoming.hibernate.command.GetPerson;
 import pers.xiaoming.hibernate.command.LeftFetchJoin;
 import pers.xiaoming.hibernate.entity.City;
 import pers.xiaoming.hibernate.entity.Person;
-import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 import java.util.HashSet;
 import java.util.Set;
