@@ -1,10 +1,13 @@
 package pers.xiaoming.hibernate.command.self_relation;
 
 import org.hibernate.Session;
+import pers.xiaoming.hibernate.SessionManager;
 import pers.xiaoming.hibernate.entity.self_relation.Employee;
 
 public class CreateEmployee {
-    public void create(Session session, Employee employee) throws Exception {
+    public void create(Employee employee) throws Exception {
+        Session session = SessionManager.getSession();
+
         try {
             session.beginTransaction();
 

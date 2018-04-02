@@ -16,10 +16,10 @@ public class CreateTest {
 
         PersonM person1 = new PersonM("John");
         person1.setCity(city);
-        createPerson.create(SessionManager.getSession(), person1);
+        createPerson.create(person1);
 
         PersonM person2 = new PersonM("Mike");
         person2.setCity(city);
-        createPerson.create(SessionManager.getSession(), person2);
+        createPerson.create(person2);
     }
 }

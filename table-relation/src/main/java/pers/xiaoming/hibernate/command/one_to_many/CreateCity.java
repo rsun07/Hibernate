@@ -1,10 +1,12 @@
 package pers.xiaoming.hibernate.command.one_to_many;
 
 import org.hibernate.Session;
+import pers.xiaoming.hibernate.SessionManager;
 import pers.xiaoming.hibernate.entity.one_to_many.City;
 
 public class CreateCity {
-    public void create(Session session, City city) throws Exception {
+    public void create(City city) throws Exception {
+        Session session = SessionManager.getSession();
 
         try {
             session.beginTransaction();

@@ -23,7 +23,7 @@ public class CreateTest {
     @Test
     public void testCreate() throws Exception {
         CreateEmployee createEmployee = new CreateEmployee();
-        createEmployee.create(SessionManager.getSession(), manager);
+        createEmployee.create(manager);
         verifyCreate();
     }
 
@@ -32,7 +32,7 @@ public class CreateTest {
 
         for (Employee employee : manager.getSubordinators()) {
 
-            DBEmployee managerReturn = getEmployee.getManager(SessionManager.getSession(), employee.getId());
+            DBEmployee managerReturn = getEmployee.getManager(employee.getId());
 
             Assert.assertNull(managerReturn.getManager_id());
             Assert.assertEquals(managerReturn.getName(), manager.getName());

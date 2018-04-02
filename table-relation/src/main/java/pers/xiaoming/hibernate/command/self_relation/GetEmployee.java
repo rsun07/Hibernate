@@ -3,11 +3,14 @@ package pers.xiaoming.hibernate.command.self_relation;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.transform.Transformers;
+import pers.xiaoming.hibernate.SessionManager;
 import pers.xiaoming.hibernate.entity.self_relation.DBEmployee;
 import pers.xiaoming.hibernate.entity.self_relation.Employee;
 
 public class GetEmployee {
-    public Employee getEmployee(Session session, int id) {
+    public Employee getEmployee(int id) {
+        Session session = SessionManager.getSession();
+
         try {
             session.beginTransaction();
 
@@ -29,7 +32,9 @@ public class GetEmployee {
     private static final String HQL_QUERY = "select new Employee(name, title) from Employee where id = "
             + "(select manager_id from Employee where id = :id)";
 
-    public DBEmployee getManager(Session session, int id) {
+    public DBEmployee getManager(int id) {
+        Session session = SessionManager.getSession();
+
         try {
             session.beginTransaction();
 

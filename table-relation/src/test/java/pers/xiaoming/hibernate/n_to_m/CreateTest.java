@@ -31,7 +31,7 @@ public class CreateTest {
     @Test
     public void testCreate() throws Exception {
         CreateCustomer createCustomer = new CreateCustomer();
-        createCustomer.create(SessionManager.getSession(), customer1);
-        createCustomer.create(SessionManager.getSession(), customer2);
+        createCustomer.create(customer1);
+        createCustomer.create(customer2);
     }
 }

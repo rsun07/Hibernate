@@ -31,7 +31,7 @@ public class CreateTest {
     @Test
     public void testCreate() throws Exception {
         CreateCity createCity = new CreateCity();
-        createCity.create(SessionManager.getSession(), city);
+        createCity.create(city);
         verifyCreate();
     }
 
@@ -39,9 +39,7 @@ public class CreateTest {
         GetEntity<Person> getPerson = new GetPerson();
         for (Person person : residents) {
             Assert.assertEquals(person,
-                    getPerson.get(
-                            SessionManager.getSession(),
-                            person.getId()));
+                    getPerson.get(person.getId()));
         }
     }
 }

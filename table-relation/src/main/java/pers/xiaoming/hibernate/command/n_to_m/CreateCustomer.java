@@ -1,10 +1,12 @@
 package pers.xiaoming.hibernate.command.n_to_m;
 
 import org.hibernate.Session;
+import pers.xiaoming.hibernate.SessionManager;
 import pers.xiaoming.hibernate.entity.n_to_m.Customer;
 
 public class CreateCustomer {
-    public void create(Session session, Customer customer) throws Exception {
+    public void create(Customer customer) throws Exception {
+        Session session = SessionManager.getSession();
 
         try {
             session.beginTransaction();
