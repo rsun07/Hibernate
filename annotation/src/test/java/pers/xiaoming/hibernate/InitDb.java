@@ -22,7 +22,7 @@ public class InitDb {
     private static List<Student> students;
 
     @BeforeSuite
-    public static void initData() {
+    public static void initStuents() {
         students = new ArrayList<>();
 
         Random random = new Random();

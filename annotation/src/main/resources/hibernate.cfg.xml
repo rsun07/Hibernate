@@ -7,7 +7,11 @@
     <session-factory>
 
         <!--Register entity mapping files-->
+        <!--When using annotation, use class rather than xml resource-->
         <mapping class="pers.xiaoming.hibernate.entity.Student"/>
+
+        <mapping class="pers.xiaoming.hibernate.entity.Person"/>
+        <mapping class="pers.xiaoming.hibernate.entity.City"/>
 
     </session-factory>
 </hibernate-configuration>
