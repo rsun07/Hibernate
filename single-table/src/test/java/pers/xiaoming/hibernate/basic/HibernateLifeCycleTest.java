@@ -24,7 +24,7 @@ public class HibernateLifeCycleTest {
         Assert.assertNull(student.getId());
 
         // here use MySessionManager, my.cfg.xml with hibernate.properties
-        this.id = dbOperator.create(MySessionManager.getSession(), student);
+        this.id = dbOperator.create(student);
 
         Student studentAfterCreate = student;
 
@@ -39,6 +39,6 @@ public class HibernateLifeCycleTest {
     @AfterClass
     public void cleanup() throws Exception {
         CURDStudentBasic dbOperator = new CURDStudentBasic();
-        dbOperator.delete(MySessionManager.getSession(), this.id);
+        dbOperator.delete(this.id);
     }
 }

@@ -10,7 +10,7 @@ public class GetCountTest {
     @Test(dataProvider = "get_count_impl")
     public void testGetByPage(GetCount getCount) throws Exception {
 
-        int count = getCount.get(SessionManager.getSession()).intValue();
+        int count = getCount.get().intValue();
         Assert.assertEquals(DataProcessor.getNUM_OF_DATA_GENERATE(), count);
     }
 

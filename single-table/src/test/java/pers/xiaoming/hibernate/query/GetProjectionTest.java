@@ -15,7 +15,7 @@ public class GetProjectionTest {
 
         int ageMin = 21;
 
-        List<Student> students = getProjection.get(SessionManager.getSession(), ageMin);
+        List<Student> students = getProjection.get(ageMin);
 
         for (Student student : students) {
             Assert.assertNotNull(student.getAge());

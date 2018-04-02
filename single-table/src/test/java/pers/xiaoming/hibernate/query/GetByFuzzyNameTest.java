@@ -12,7 +12,7 @@ import java.util.List;
 public class GetByFuzzyNameTest {
     @Test(dataProvider = "get_by_fuzzy_name_impl")
     public void testGetByFuzzyName(GetByFuzzyName getStudents) throws Exception {
-        List<Student> students = getStudents.get(SessionManager.getSession(), DataProcessor.getNAME_PREFIX());
+        List<Student> students = getStudents.get(DataProcessor.getNAME_PREFIX());
         Assert.assertEquals(DataProcessor.getNUM_OF_DATA_GENERATE(), students.size());
     }
 

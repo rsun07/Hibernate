@@ -14,7 +14,7 @@ public class GetByGroupTest {
         // only age 20 will appear more than 3 times
         int appearance = 3;
 
-        List<Object> ages = getByGroup.get(SessionManager.getSession(), appearance);
+        List<Object> ages = getByGroup.get(appearance);
 
         Assert.assertEquals(ages.size(), 1);
         for (Object age : ages) {

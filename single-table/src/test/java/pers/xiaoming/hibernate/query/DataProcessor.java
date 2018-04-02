@@ -56,8 +56,7 @@ public class DataProcessor {
                     .build();
             students.add(student);
 
-            Session session = SessionManager.getSession();
-            int id = dbOperator.create(session, student);
+            int id = dbOperator.create(student);
             ids.add(id);
         }
     }
@@ -69,8 +68,7 @@ public class DataProcessor {
         for(int id : ids) {
             CURDStudentBasic dbOperator = new CURDStudentBasic();
 
-            Session session = SessionManager.getSession();
-            dbOperator.delete(session, id);
+            dbOperator.delete(id);
         }
     }
 

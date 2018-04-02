@@ -22,7 +22,7 @@ public class GetByQueryOrderTest {
         int maxResult = 6;
 
         // by default, return desc result
-        List<Student> students = getByOrder.get(SessionManager.getSession(), orderByField, GetByOrder.QueryOrder.DESC, maxResult);
+        List<Student> students = getByOrder.get(orderByField, GetByOrder.QueryOrder.DESC, maxResult);
 
         Assert.assertEquals(students.size(), maxResult);
         System.out.println(students);
@@ -38,7 +38,7 @@ public class GetByQueryOrderTest {
         int maxResult = 6;
 
         // by default, return desc result
-        List<Student> students = getByOrder.get(SessionManager.getSession(), orderByField, GetByOrder.QueryOrder.ASC, maxResult);
+        List<Student> students = getByOrder.get(orderByField, GetByOrder.QueryOrder.ASC, maxResult);
 
         Assert.assertEquals(students.size(), maxResult);
         System.out.println(students);
@@ -65,7 +65,7 @@ public class GetByQueryOrderTest {
         int maxResult = 6;
 
         // by default, return desc result
-        List<Student> students = getByOrder.get(SessionManager.getSession(), orderByField, GetByOrder.QueryOrder.DESC, maxResult);
+        List<Student> students = getByOrder.get(orderByField, GetByOrder.QueryOrder.DESC, maxResult);
 
         Assert.assertEquals(students.size(), maxResult);
         System.out.println(students);

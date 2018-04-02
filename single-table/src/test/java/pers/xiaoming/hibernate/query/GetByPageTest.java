@@ -15,7 +15,7 @@ public class GetByPageTest {
         int pageSize = 2;
         int startIndex = 6;
 
-        List<Student> students = getByPage.get(SessionManager.getSession(), startIndex, pageSize);
+        List<Student> students = getByPage.get(startIndex, pageSize);
         Assert.assertEquals(pageSize, students.size());
     }
 

@@ -21,7 +21,7 @@ public class StudentCURDTest {
 
     @Test
     public void testCreate() throws Exception {
-        id = dbOperator.create(SessionManager.getSession(), student);
+        id = dbOperator.create(student);
         testGet();
     }
 
@@ -29,27 +29,27 @@ public class StudentCURDTest {
     public void testUpdate() throws Exception {
         student.setAge(22);
         student.setScore(90.5);
-        dbOperator.update(SessionManager.getSession(), student);
+        dbOperator.update(student);
         testGet();
     }
 
     @Test(dependsOnMethods = "testUpdate")
     public void testDelete() throws Exception {
-        dbOperator.delete(SessionManager.getSession(), id);
+        dbOperator.delete(id);
         student = null;
         testGet();
     }
 
 
     private void testGet() throws Exception {
-        Student studentGetFromDb = dbOperator.get(SessionManager.getSession(), id);
+        Student studentGetFromDb = dbOperator.get(id);
         Assert.assertEquals(student, studentGetFromDb);
     }
 
     @AfterTest
     public void cleanup() throws Exception {
         try {
-            dbOperator.delete(SessionManager.getSession(), id);
+            dbOperator.delete(id);
         } catch (Exception e) {
             // ignore
         }
