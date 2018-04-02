@@ -12,7 +12,7 @@ public class GetCityTest {
     @Test(dataProvider = "left_join")
     public void testGetCity(GetCity getCity) throws Exception {
         int cityId = 2;
-        City returnCity = getCity.get(SessionManager.getSession(), cityId);
+        City returnCity = getCity.get(cityId);
         Assert.assertEquals(returnCity, InitDb.getCities().get(cityId));
     }
 

@@ -33,7 +33,7 @@ public class InitDb {
                 Person person = new Person("City" + i + "_Person" + j);
                 city.getResidents().add(person);
             }
-            createCity.create(SessionManager.getSession(), city);
+            createCity.create(city);
             cities.add(city);
         }
     }

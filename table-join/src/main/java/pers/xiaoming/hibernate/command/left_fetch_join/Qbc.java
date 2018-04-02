@@ -4,13 +4,16 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
+import pers.xiaoming.hibernate.SessionManager;
 import pers.xiaoming.hibernate.command.GetCity;
 import pers.xiaoming.hibernate.entity.City;
 
 public class Qbc implements GetCity {
     @Override
     @SuppressWarnings("unchecked")
-    public City get(Session session, int id) throws Exception {
+    public City get(int id) throws Exception {
+        Session session = SessionManager.getSession();
+
         try {
             session.beginTransaction();
 
