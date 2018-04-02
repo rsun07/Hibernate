@@ -3,6 +3,7 @@ package pers.xiaoming.hibernate.command;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import pers.xiaoming.hibernate.entity.City;
+import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 import java.util.List;
 
@@ -13,7 +14,9 @@ public class LeftFetchJoin {
     private static final String QUERY = "select distinct c from City c left outer join fetch c.residents where c.id = :city_id";
 
     @SuppressWarnings("unchecked")
-    public City get(Session session, int id) {
+    public City get(int id) {
+        Session session = SessionManager.getSession();
+
         try {
             session.beginTransaction();
 

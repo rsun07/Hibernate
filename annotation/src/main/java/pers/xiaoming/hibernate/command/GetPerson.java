@@ -2,10 +2,13 @@ package pers.xiaoming.hibernate.command;
 
 import org.hibernate.Session;
 import pers.xiaoming.hibernate.entity.Person;
+import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 public class GetPerson {
 
-    public Person get(Session session, int id) {
+    public Person get(int id) {
+        Session session = SessionManager.getSession();
+
         try {
             session.beginTransaction();
 

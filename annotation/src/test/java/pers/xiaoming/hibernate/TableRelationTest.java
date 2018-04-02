@@ -30,13 +30,13 @@ public class TableRelationTest {
     @Test
     public void testCreate() throws Exception {
         CreateCity createCity = new CreateCity();
-        createCity.create(SessionManager.getSession(), city);
+        createCity.create(city);
         verifyCreate();
     }
 
     private void verifyCreate() {
         LeftFetchJoin cityGetter = new LeftFetchJoin();
-        City city = cityGetter.get(SessionManager.getSession(), 1);
+        City city = cityGetter.get(1);
         Assert.assertEquals(city, this.city);
     }
 }

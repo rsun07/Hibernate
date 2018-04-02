@@ -2,9 +2,11 @@ package pers.xiaoming.hibernate.command;
 
 import org.hibernate.Session;
 import pers.xiaoming.hibernate.entity.City;
+import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 public class CreateCity {
-    public void create(Session session, City city) {
+    public void create(City city) {
+        Session session = SessionManager.getSession();
 
         try {
             session.beginTransaction();
