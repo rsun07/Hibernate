@@ -5,11 +5,14 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Projections;
 import pers.xiaoming.hibernate.command.get_interface.GetCount;
 import pers.xiaoming.hibernate.entity.Student;
+import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 public class GetCountImpl implements GetCount {
 
     @Override
-    public Long get(Session session) {
+    public Long get() {
+        Session session = SessionManager.getSession();
+
         try {
             session.beginTransaction();
 

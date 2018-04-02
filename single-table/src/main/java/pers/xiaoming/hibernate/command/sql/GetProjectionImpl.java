@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.transform.Transformers;
 import pers.xiaoming.hibernate.command.get_interface.GetProjection;
 import pers.xiaoming.hibernate.entity.Student;
+import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 import java.util.List;
 
@@ -17,7 +18,9 @@ public class GetProjectionImpl implements GetProjection {
     private final static String QUERY = "SELECT t_age age, t_score score FROM t_student WHERE t_age > ? LIMIT 50;";
 
     @SuppressWarnings("unchecked")
-    public List<Student> get(Session session, int age) throws Exception {
+    public List<Student> get(int age) throws Exception {
+        Session session = SessionManager.getSession();
+
         try {
             session.beginTransaction();
 

@@ -2,6 +2,7 @@ package pers.xiaoming.hibernate.command.hql;
 
 import org.hibernate.Session;
 import pers.xiaoming.hibernate.command.get_interface.GetByGroup;
+import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 import java.util.Collections;
 import java.util.List;
@@ -13,7 +14,8 @@ public class GetByGroupImpl implements GetByGroup {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Object> get(Session session, int appearance) {
+    public List<Object> get(int appearance) {
+        Session session = SessionManager.getSession();
         try {
             session.beginTransaction();
 

@@ -4,6 +4,7 @@ import org.hibernate.Session;
 import pers.xiaoming.hibernate.command.get_interface.GetByFuzzyName;
 import pers.xiaoming.hibernate.command.get_interface.GetProjection;
 import pers.xiaoming.hibernate.entity.Student;
+import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 import java.util.List;
 
@@ -12,7 +13,9 @@ public class GetProjectionImpl implements GetProjection {
     private final static String QUERY = "SELECT new Student(age, score) FROM Student WHERE age > :age";
 
     @SuppressWarnings("unchecked")
-    public List<Student> get(Session session, int age) throws Exception {
+    public List<Student> get(int age) throws Exception {
+        Session session = SessionManager.getSession();
+
         try {
             session.beginTransaction();
 

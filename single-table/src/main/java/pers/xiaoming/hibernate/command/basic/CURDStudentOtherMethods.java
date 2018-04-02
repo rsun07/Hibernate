@@ -2,9 +2,11 @@ package pers.xiaoming.hibernate.command.basic;
 
 import org.hibernate.Session;
 import pers.xiaoming.hibernate.entity.Student;
+import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 public class CURDStudentOtherMethods {
-    public int persist(Session session, Student student) throws Exception {
+    public int persist(Student student) throws Exception {
+        Session session = SessionManager.getSession();
         try {
             session.beginTransaction();
             // same as
@@ -22,7 +24,8 @@ public class CURDStudentOtherMethods {
         }
     }
 
-    public void saveOrUpdate(Session session, Student student) throws Exception {
+    public void saveOrUpdate(Student student) throws Exception {
+        Session session = SessionManager.getSession();
         try {
             session.beginTransaction();
 
@@ -43,7 +46,8 @@ public class CURDStudentOtherMethods {
      * 1. load() will throw exception if object not exist
      * 2. load() will return a proxy by default and db won't be hit until the proxy is first invoked
      */
-    public Student load(Session session, int id) throws Exception {
+    public Student load(int id) throws Exception {
+        Session session = SessionManager.getSession();
         try {
             session.beginTransaction();
 

@@ -2,6 +2,7 @@ package pers.xiaoming.hibernate.command.basic;
 
 import org.hibernate.Session;
 import pers.xiaoming.hibernate.entity.Student;
+import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 public class CURDStudentBasic {
 
@@ -15,7 +16,8 @@ public class CURDStudentBasic {
      *
      *
      */
-    public int create(Session session, Student student) throws Exception {
+    public int create(Student student) throws Exception {
+        Session session = SessionManager.getSession();
         try {
             session.beginTransaction();
             int id = (Integer) session.save(student);
@@ -28,7 +30,8 @@ public class CURDStudentBasic {
         }
     }
 
-    public void delete(Session session, int id) throws Exception {
+    public void delete(int id) throws Exception {
+        Session session = SessionManager.getSession();
         try {
             session.beginTransaction();
             session.delete(Student.builder().id(id).build());
@@ -40,7 +43,8 @@ public class CURDStudentBasic {
         }
     }
 
-    public void update(Session session, Student student) throws Exception {
+    public void update(Student student) throws Exception {
+        Session session = SessionManager.getSession();
         try {
             session.beginTransaction();
             session.update(student);
@@ -52,7 +56,8 @@ public class CURDStudentBasic {
         }
     }
 
-    public Student get(Session session, int id) throws Exception {
+    public Student get(int id) throws Exception {
+        Session session = SessionManager.getSession();
         try {
             session.beginTransaction();
             Student studentFind = session.get(Student.class, id);

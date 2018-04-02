@@ -4,6 +4,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import pers.xiaoming.hibernate.command.get_interface.GetByPage;
 import pers.xiaoming.hibernate.entity.Student;
+import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 import java.util.List;
 
@@ -11,7 +12,9 @@ public class GetByPageImpl implements GetByPage {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Student> get(Session session, int offset, int pageSize) throws Exception {
+    public List<Student> get(int offset, int pageSize) throws Exception {
+        Session session = SessionManager.getSession();
+
         try {
             session.beginTransaction();
 

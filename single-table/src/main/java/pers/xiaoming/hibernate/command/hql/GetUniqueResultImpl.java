@@ -3,6 +3,7 @@ package pers.xiaoming.hibernate.command.hql;
 import org.hibernate.Session;
 import pers.xiaoming.hibernate.command.get_interface.GetUniqueResult;
 import pers.xiaoming.hibernate.entity.Student;
+import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 public class GetUniqueResultImpl implements GetUniqueResult {
     // Student here is class name rather than table name
@@ -14,7 +15,9 @@ public class GetUniqueResultImpl implements GetUniqueResult {
             "SELECT new Student(id, name, age, score) FROM Student WHERE id = :id";
 
     @SuppressWarnings("unchecked")
-    public Student get(Session session, int id) throws Exception {
+    public Student get(int id) throws Exception {
+        Session session = SessionManager.getSession();
+
         try {
             session.beginTransaction();
 

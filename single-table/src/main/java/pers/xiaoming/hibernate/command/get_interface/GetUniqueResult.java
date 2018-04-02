@@ -4,5 +4,5 @@ import org.hibernate.Session;
 import pers.xiaoming.hibernate.entity.Student;
 
 public interface GetUniqueResult {
-    Student get(Session session, int id) throws Exception;
+    Student get(int id) throws Exception;
 }

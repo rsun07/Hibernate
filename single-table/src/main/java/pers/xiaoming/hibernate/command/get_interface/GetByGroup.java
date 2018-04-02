@@ -5,5 +5,5 @@ import org.hibernate.Session;
 import java.util.List;
 
 public interface GetByGroup {
-    List<Object> get(Session session, int appearance);
+    List<Object> get(int appearance);
 }

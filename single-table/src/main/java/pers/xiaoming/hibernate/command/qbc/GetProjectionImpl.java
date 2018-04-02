@@ -8,6 +8,7 @@ import org.hibernate.criterion.Restrictions;
 import org.hibernate.transform.Transformers;
 import pers.xiaoming.hibernate.command.get_interface.GetProjection;
 import pers.xiaoming.hibernate.entity.Student;
+import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +16,9 @@ import java.util.List;
 public class GetProjectionImpl implements GetProjection {
 
     @SuppressWarnings("unchecked")
-    public List<Student> get(Session session, int age) throws Exception {
+    public List<Student> get(int age) throws Exception {
+        Session session = SessionManager.getSession();
+
         try {
             session.beginTransaction();
 

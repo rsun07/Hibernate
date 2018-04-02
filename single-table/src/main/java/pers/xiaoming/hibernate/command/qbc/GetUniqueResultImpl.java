@@ -5,11 +5,14 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import pers.xiaoming.hibernate.command.get_interface.GetUniqueResult;
 import pers.xiaoming.hibernate.entity.Student;
+import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 public class GetUniqueResultImpl implements GetUniqueResult {
 
     @SuppressWarnings("unchecked")
-    public Student get(Session session, int id) throws Exception {
+    public Student get(int id) throws Exception {
+        Session session = SessionManager.getSession();
+
         try {
             session.beginTransaction();
 

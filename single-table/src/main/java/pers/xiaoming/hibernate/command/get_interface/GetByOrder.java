@@ -6,7 +6,7 @@ import pers.xiaoming.hibernate.entity.Student;
 import java.util.List;
 
 public interface GetByOrder {
-    List<Student> get(Session session, String orderByField, QueryOrder queryOrder, int maxResult) throws Exception;
+    List<Student> get(String orderByField, QueryOrder queryOrder, int maxResult) throws Exception;
 
     enum QueryOrder {
         DESC,

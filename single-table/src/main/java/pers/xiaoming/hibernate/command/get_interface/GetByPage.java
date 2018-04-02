@@ -6,5 +6,5 @@ import pers.xiaoming.hibernate.entity.Student;
 import java.util.List;
 
 public interface GetByPage {
-    List<Student> get(Session session, int offset, int pageSize) throws Exception;
+    List<Student> get(int offset, int pageSize) throws Exception;
 }

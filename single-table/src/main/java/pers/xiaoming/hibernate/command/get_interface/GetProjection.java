@@ -6,5 +6,5 @@ import pers.xiaoming.hibernate.entity.Student;
 import java.util.List;
 
 public interface GetProjection {
-    List<Student> get(Session session, int age) throws Exception;
+    List<Student> get(int age) throws Exception;
 }

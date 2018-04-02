@@ -4,6 +4,7 @@ import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import pers.xiaoming.hibernate.command.get_interface.GetUniqueResult;
 import pers.xiaoming.hibernate.entity.Student;
+import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 import java.util.List;
 
@@ -12,7 +13,9 @@ public class GetUniqueResultImpl implements GetUniqueResult {
     private final static String QUERY = "SELECT t_id, t_name, t_age, t_score FROM t_student WHERE t_id = ? LIMIT 10;";
 
     @SuppressWarnings("unchecked")
-    public Student get(Session session, int id) throws Exception {
+    public Student get(int id) throws Exception {
+        Session session = SessionManager.getSession();
+
         try {
             session.beginTransaction();
 

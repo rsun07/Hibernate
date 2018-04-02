@@ -5,12 +5,15 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Order;
 import pers.xiaoming.hibernate.command.get_interface.GetByOrder;
 import pers.xiaoming.hibernate.entity.Student;
+import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 import java.util.List;
 
 public class GetByOrderImpl implements GetByOrder {
     @SuppressWarnings("unchecked")
-    public List<Student> get(Session session, String orderByField, QueryOrder queryOrder, int maxResult) throws Exception {
+    public List<Student> get(String orderByField, QueryOrder queryOrder, int maxResult) throws Exception {
+        Session session = SessionManager.getSession();
+
         try {
             session.beginTransaction();
 

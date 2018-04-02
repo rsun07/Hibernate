@@ -8,6 +8,7 @@ import org.hibernate.transform.Transformers;
 import pers.xiaoming.hibernate.command.get_interface.GetByGroup;
 import pers.xiaoming.hibernate.entity.AgeCountQueryResult;
 import pers.xiaoming.hibernate.entity.Student;
+import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,9 @@ public class GetByGroupImpl implements GetByGroup {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Object> get(Session session, int appearance) {
+    public List<Object> get(int appearance) {
+        Session session = SessionManager.getSession();
+
         try {
             session.beginTransaction();
 

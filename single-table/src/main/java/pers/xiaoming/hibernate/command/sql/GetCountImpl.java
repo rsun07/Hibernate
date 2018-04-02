@@ -4,6 +4,7 @@ import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import pers.xiaoming.hibernate.command.get_interface.GetCount;
 import pers.xiaoming.hibernate.entity.Student;
+import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 import java.math.BigInteger;
 
@@ -15,7 +16,9 @@ public class GetCountImpl implements GetCount {
     private final static String QUERY = "SELECT COUNT(*) FROM t_student;";
 
     @Override
-    public Long get(Session session) {
+    public Long get() {
+        Session session = SessionManager.getSession();
+
         try {
             session.beginTransaction();
 

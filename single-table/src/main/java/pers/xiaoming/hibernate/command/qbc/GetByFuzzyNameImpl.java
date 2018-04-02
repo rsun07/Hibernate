@@ -5,12 +5,15 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import pers.xiaoming.hibernate.command.get_interface.GetByFuzzyName;
 import pers.xiaoming.hibernate.entity.Student;
+import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 import java.util.List;
 
 public class GetByFuzzyNameImpl implements GetByFuzzyName {
     @SuppressWarnings("unchecked")
-    public List<Student> get(Session session, String nameLike) throws Exception {
+    public List<Student> get(String nameLike) throws Exception {
+        Session session = SessionManager.getSession();
+
         try {
             session.beginTransaction();
 
