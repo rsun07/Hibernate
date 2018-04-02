@@ -7,7 +7,13 @@
 <suite name="test driven development test">
     <test name="Initial Dao">
         <classes>
-            <class name="pers.xiaoming.hibernate.InitDao"/>
+            <class name="pers.xiaoming.hibernate.InitDb"/>
+        </classes>
+    </test>
+
+    <test name="Single table test">
+        <classes>
+            <class name="pers.xiaoming.hibernate.SingleTableTest"/>
         </classes>
     </test>
 </suite>
