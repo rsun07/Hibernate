@@ -2,6 +2,7 @@ package pers.xiaoming.hibernate.command.list_vs_iterate;
 
 import org.hibernate.Session;
 import pers.xiaoming.hibernate.entity.Student;
+import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 import java.util.Iterator;
 import java.util.List;
@@ -10,7 +11,9 @@ public class GetByIterate{
 
     private static final String QUERY = "FROM Student";
 
-    public void getAll(Session session) {
+    public void getAll() {
+        Session session = SessionManager.getSession();
+
         try {
             session.beginTransaction();
 

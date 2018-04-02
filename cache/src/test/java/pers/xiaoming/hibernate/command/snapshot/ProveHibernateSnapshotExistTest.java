@@ -51,9 +51,9 @@ public class ProveHibernateSnapshotExistTest {
 
         ProveSnapshotExist dbOperator = new ProveSnapshotExist();
 
-        dbOperator.run(SessionManager.getSession(), dbId, student.getName(), updatedName);
+        dbOperator.run(dbId, student.getName(), updatedName);
 
-        Student stuAfterUpdate = new GetStudent().get(SessionManager.getSession(), dbId);
+        Student stuAfterUpdate = new GetStudent().get(dbId);
 
         Assert.assertEquals(stuAfterUpdate.getScore(), student.getScore());
         Assert.assertEquals(stuAfterUpdate.getAge(), student.getAge());
@@ -97,9 +97,9 @@ public class ProveHibernateSnapshotExistTest {
 
         ProveSnapshotExist dbOperator = new ProveSnapshotExist();
 
-        dbOperator.run(SessionManager.getSession(), dbId, student.getName(), updatedName);
+        dbOperator.run(dbId, student.getName(), updatedName);
 
-        Student stuAfterUpdate = new GetStudent().get(SessionManager.getSession(), dbId);
+        Student stuAfterUpdate = new GetStudent().get(dbId);
 
         Assert.assertEquals(stuAfterUpdate.getScore(), student.getScore());
         Assert.assertEquals(stuAfterUpdate.getAge(), student.getAge());

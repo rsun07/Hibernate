@@ -42,7 +42,7 @@ public class GetTest {
     public void testGetByList() {
         GetByList dbOperator = new GetByList();
 
-        dbOperator.getAll(SessionManager.getSession());
+        dbOperator.getAll();
     }
 
     /*
@@ -100,7 +100,7 @@ public class GetTest {
     public void testGetByIterate() {
         GetByIterate dbOperator = new GetByIterate();
 
-        dbOperator.getAll(SessionManager.getSession());
+        dbOperator.getAll();
     }
 
 
@@ -151,6 +151,6 @@ public class GetTest {
     public void testGetByListThenIterate() {
         GetByListThenIterate dbOperator = new GetByListThenIterate();
 
-        dbOperator.getAll(SessionManager.getSession());
+        dbOperator.getAll();
     }
 }

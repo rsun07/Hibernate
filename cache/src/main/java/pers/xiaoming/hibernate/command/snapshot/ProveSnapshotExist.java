@@ -2,9 +2,12 @@ package pers.xiaoming.hibernate.command.snapshot;
 
 import org.hibernate.Session;
 import pers.xiaoming.hibernate.entity.Student;
+import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 public class ProveSnapshotExist {
-    public void run(Session session, int id, String originName, String updatedName) {
+    public void run(int id, String originName, String updatedName) {
+        Session session = SessionManager.getSession();
+
         try {
             session.beginTransaction();
 

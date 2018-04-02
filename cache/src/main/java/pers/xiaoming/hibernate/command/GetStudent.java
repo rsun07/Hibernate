@@ -2,9 +2,12 @@ package pers.xiaoming.hibernate.command;
 
 import org.hibernate.Session;
 import pers.xiaoming.hibernate.entity.Student;
+import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 public class GetStudent {
-    public Student get(Session session, int id) {
+    public Student get(int id) {
+        Session session = SessionManager.getSession();
+
         try {
             session.beginTransaction();
 

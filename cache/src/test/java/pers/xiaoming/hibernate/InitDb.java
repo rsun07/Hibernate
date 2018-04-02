@@ -1,11 +1,8 @@
 package pers.xiaoming.hibernate;
 
-import lombok.Getter;
-import org.hibernate.Session;
 import org.testng.annotations.BeforeSuite;
 import pers.xiaoming.hibernate.command.CreateStudent;
 import pers.xiaoming.hibernate.entity.Student;
-import pers.xiaoming.hibernate.session_factory.SessionManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,8 +44,7 @@ public class InitDb {
                     .build();
             students.add(student);
 
-            Session session = SessionManager.getSession();
-            dbOperator.create(session, student);
+            dbOperator.create(student);
         }
     }
 
