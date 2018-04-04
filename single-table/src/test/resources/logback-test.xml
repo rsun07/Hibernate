@@ -2,8 +2,7 @@
 <configuration>
 
     <!--output to console, used in this module's tests-->
-    <appender name="STDOUT" class="ch.qos.logback.core.FileAppender">
-        <file>./test.log</file>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
             <Pattern>
                 %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
@@ -14,16 +13,9 @@
     <!-- Send logs to both console and file audit -->
     <logger name="pers.xiaoming.notebook" level="info"
             additivity="false">
-        <appender-ref ref="FILE-OUT" />
         <appender-ref ref="STDOUT" />
     </logger>
 
-    <root level="error">
-        <appender-ref ref="STDOUT" />
-    </root>
-    <root level="debug">
-        <appender-ref ref="STDOUT" />
-    </root>
     <root level="info">
         <appender-ref ref="STDOUT" />
     </root>
